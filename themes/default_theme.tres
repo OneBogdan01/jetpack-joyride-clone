@@ -1,0 +1,50 @@
+[gd_resource type="Theme" format=3 uid="uid://c1kla1fuheqg5"]
+
+[ext_resource type="FontFile" uid="uid://c4sr7apqtxjcr" path="res://assets/fonts/Kenney Future.ttf" id="1_het5a"]
+[ext_resource type="Texture2D" uid="uid://vprcm0rwkfml" path="res://assets/tappy_plane/PNG/UI/UIbg.png" id="2_het5a"]
+[ext_resource type="Texture2D" uid="uid://oet3eaohf6fh" path="res://assets/tappy_plane/PNG/UI/buttonLarge.png" id="2_lkf7m"]
+[ext_resource type="FontFile" uid="uid://1i34x16csd2m" path="res://assets/fonts/Kenney Pixel Square.ttf" id="3_fx2g0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fx2g0"]
+texture = ExtResource("2_lkf7m")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nwjvr"]
+texture = ExtResource("2_lkf7m")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(0.9428228, 0.94282264, 0.94282264, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r3xux"]
+texture = ExtResource("2_lkf7m")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(0.90359825, 0.90359825, 0.9035982, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bhunq"]
+texture = ExtResource("2_het5a")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+
+[resource]
+Button/colors/font_color = Color(0.9209942, 0.92099476, 0.9209944, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 4
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_het5a")
+Button/styles/hover = SubResource("StyleBoxTexture_fx2g0")
+Button/styles/normal = SubResource("StyleBoxTexture_nwjvr")
+Button/styles/pressed = SubResource("StyleBoxTexture_r3xux")
+Label/constants/outline_size = 12
+Label/font_sizes/font_size = 64
+Label/fonts/font = ExtResource("3_fx2g0")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_bhunq")

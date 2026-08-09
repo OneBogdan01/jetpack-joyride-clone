@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bvm7d85w75dst"]
+
+[ext_resource type="PackedScene" uid="uid://dd2uyn5qny0jq" path="res://scenes/obstacle.tscn" id="1_e3vlw"]
+[ext_resource type="Script" uid="uid://c5vcwce8k8wvd" path="res://scripts/obstacle_pair.gd" id="1_kt73a"]
+
+[node name="ObstaclePair" type="Node2D" unique_id=344350363]
+script = ExtResource("1_kt73a")
+
+[node name="Bottom" parent="." unique_id=766184518 instance=ExtResource("1_e3vlw")]
+position = Vector2(0, 1127)
+scale = Vector2(1.8, 1.8)
+
+[node name="Top" parent="." unique_id=1033461452 instance=ExtResource("1_e3vlw")]
+position = Vector2(0, -46)
+scale = Vector2(1.8, -1.8)

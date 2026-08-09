@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dd2uyn5qny0jq"]
+
+[ext_resource type="Script" uid="uid://b58gn8ixkwtt3" path="res://scripts/mover.gd" id="1_cjuko"]
+[ext_resource type="Texture2D" uid="uid://s4y8t250txmt" path="res://assets/tappy_plane/PNG/rockGrass.png" id="1_drdry"]
+
+[node name="Obstacle" type="StaticBody2D" unique_id=766184518]
+collision_layer = 2
+script = ExtResource("1_cjuko")
+speed = 200.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1408861851]
+position = Vector2(0, -239)
+polygon = PackedVector2Array(75, 0, 58, 0, 58, 0.6, 33, 115.8, 33, 120.3, 25.1, 130, 23.5, 130, 0, 221, 0, 239, 108, 239, 108, 214.7, 106, 190.8, 106, 182.5, 99.2, 170, 92, 111.8, 92, 103.3, 84.9, 95, 75, 6.8)
+
+[node name="RockGrass" type="Sprite2D" parent="." unique_id=1763723585]
+position = Vector2(0, -239)
+texture = ExtResource("1_drdry")
+centered = false

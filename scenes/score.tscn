@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://3ashqb10lvf1"]
+
+[ext_resource type="Script" uid="uid://cnffebgs27hwk" path="res://scripts/score.gd" id="1_8juob"]
+
+[node name="Score" type="Label" unique_id=1847261987]
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -70.0
+offset_right = 70.0
+offset_bottom = 103.0
+grow_horizontal = 2
+text = "2322222"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_8juob")

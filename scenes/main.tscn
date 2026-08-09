@@ -1,0 +1,155 @@
+[gd_scene format=3 uid="uid://d1uqtum4t7uku"]
+
+[ext_resource type="Script" uid="uid://0602mk2fgl48" path="res://scripts/main.gd" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://brjr0injhkxs2" path="res://scenes/world.tscn" id="2_0wfyh"]
+[ext_resource type="Script" uid="uid://cnffebgs27hwk" path="res://scripts/score.gd" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://daxc3lnrio7c1" path="res://scenes/game_over.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://r8ihkjd727yv" path="res://scenes/intro_screen.tscn" id="4_tbgi4"]
+[ext_resource type="Script" uid="uid://bhmpcrqy6ldv" path="res://scripts/intro_screen.gd" id="5_tefeu"]
+
+[node name="Main" type="Node" unique_id=1421043372 node_paths=PackedStringArray("obstacle_spawner")]
+script = ExtResource("1_o5qli")
+obstacle_spawner = NodePath("SubViewportContainer/SubViewport/World/ObstacleSpawner")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=479793381]
+custom_maximum_size = Vector2(720, -1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=964142306]
+disable_3d = true
+handle_input_locally = false
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+physics_object_picking = true
+size = Vector2i(720, 1080)
+render_target_update_mode = 4
+
+[node name="World" parent="SubViewportContainer/SubViewport" unique_id=1966478873 instance=ExtResource("2_0wfyh")]
+unique_name_in_owner = true
+
+[node name="Sprite" parent="SubViewportContainer/SubViewport/World/Backgrounds/FarAway" parent_id_path=PackedInt32Array(1966478873, 70455985) index="0" unique_id=518944460]
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="SubViewportContainer/SubViewport/World" index="1" unique_id=307342213]
+position = Vector2(400, 543)
+freeze = true
+freeze_mode = 1
+
+[node name="Control" type="Control" parent="SubViewportContainer/SubViewport" unique_id=1791547254]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Score" type="Label" parent="SubViewportContainer/SubViewport/Control" unique_id=853272306]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -70.0
+offset_right = 70.0
+offset_bottom = 103.0
+grow_horizontal = 2
+text = "2322222"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_sugp2")
+
+[node name="IntroScreen" parent="." unique_id=1455413948 instance=ExtResource("4_tbgi4")]
+custom_maximum_size = Vector2(720, -1)
+mouse_filter = 2
+script = ExtResource("5_tefeu")
+offset_position = Vector2(0, 25)
+
+[node name="TextureRect" parent="IntroScreen" index="0" unique_id=1882033945]
+offset_left = 13.0
+offset_top = 140.0
+offset_right = 437.0
+offset_bottom = 278.0
+stretch_mode = 5
+
+[node name="HighscoreText" type="Label" parent="IntroScreen" unique_id=1456974614]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -336.0
+offset_bottom = 103.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 32
+text = "High score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Highscore" type="Label" parent="IntroScreen/HighscoreText" unique_id=2011079745]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -187.0
+offset_right = 173.0
+offset_bottom = 103.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleScreen" type="Label" parent="IntroScreen" unique_id=3003413]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -217.0
+offset_right = 400.0
+offset_bottom = -114.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(17.554007, 17.061005, 0, 1)
+text = "Tappy 
+The fake bird"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverMenu" parent="." unique_id=1483635232 instance=ExtResource("4_jyhfs")]
+unique_name_in_owner = true
+visible = false
+
+[node name="ScorePanel" parent="GameOverMenu" index="1" unique_id=1956653196]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -438.0
+offset_top = -62.0
+offset_right = 282.0
+offset_bottom = 315.0
+
+[node name="MarginContainer" parent="GameOverMenu/ScorePanel" index="0" unique_id=2080587600]
+theme_override_constants/margin_left = 133
+
+[connection signal="hit_enviroment" from="SubViewportContainer/SubViewport/World/Player" to="." method="_on_player_hit_enviroment"]
+[connection signal="started_game" from="IntroScreen" to="." method="_on_intro_screen_started_game"]
+
+[editable path="SubViewportContainer/SubViewport/World"]
+[editable path="IntroScreen"]
+[editable path="GameOverMenu"]

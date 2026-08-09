@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://brjr0injhkxs2"]
+
+[ext_resource type="Script" uid="uid://umybfddp5dys" path="res://scripts/world.gd" id="1_71j4m"]
+[ext_resource type="Texture2D" uid="uid://bm6svr1gqep4l" path="res://assets/tappy_plane/PNG/background.png" id="1_k0juu"]
+[ext_resource type="PackedScene" uid="uid://b8nimb5anw8sy" path="res://scenes/player.tscn" id="2_71j4m"]
+[ext_resource type="PackedScene" uid="uid://daup3whagkygu" path="res://scenes/floor.tscn" id="3_qfnet"]
+[ext_resource type="PackedScene" uid="uid://vecp3351bi4q" path="res://scenes/obstacle_spawner.tscn" id="5_71j4m"]
+
+[node name="World" type="Node2D" unique_id=1966478873]
+script = ExtResource("1_71j4m")
+
+[node name="Backgrounds" type="Node2D" parent="." unique_id=1037771370]
+scale = Vector2(2.25, 2.25)
+
+[node name="FarAway" type="Parallax2D" parent="Backgrounds" unique_id=70455985]
+scroll_scale = Vector2(0.5, 1)
+repeat_size = Vector2(800, 0)
+autoscroll = Vector2(-50, 0)
+repeat_times = 3
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite" type="Sprite2D" parent="Backgrounds/FarAway" unique_id=518944460]
+texture = ExtResource("1_k0juu")
+centered = false
+
+[node name="Ground" type="Parallax2D" parent="Backgrounds" unique_id=641245886]
+z_index = 1
+scroll_offset = Vector2(0, 255.11111)
+repeat_size = Vector2(808, 0)
+autoscroll = Vector2(-200, 0)
+repeat_times = 3
+ignore_camera_scroll = true
+
+[node name="Floor" parent="Backgrounds/Ground" unique_id=1838703133 instance=ExtResource("3_qfnet")]
+position = Vector2(0, 240)
+
+[node name="Player" parent="." unique_id=307342213 instance=ExtResource("2_71j4m")]
+position = Vector2(272, 544)
+
+[node name="ObstacleSpawner" parent="." unique_id=720864451 instance=ExtResource("5_71j4m")]
+position = Vector2(912, 0)
