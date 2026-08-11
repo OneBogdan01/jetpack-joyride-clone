@@ -1,7 +1,7 @@
 class_name World
 extends Node2D
 
-@onready var player: Player = $Player
+@onready var player: RigidBody2D = %Player
 
 @onready var backgrounds: Node2D = $Backgrounds
 

@@ -9,62 +9,18 @@
 
 [node name="Main" type="Node" unique_id=1421043372 node_paths=PackedStringArray("obstacle_spawner")]
 script = ExtResource("1_o5qli")
-obstacle_spawner = NodePath("SubViewportContainer/SubViewport/World/ObstacleSpawner")
+obstacle_spawner = NodePath("World/ObstacleSpawner")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=479793381]
-custom_maximum_size = Vector2(720, -1)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=964142306]
-disable_3d = true
-handle_input_locally = false
-audio_listener_enable_2d = true
-audio_listener_enable_3d = true
-physics_object_picking = true
-size = Vector2i(720, 1080)
-render_target_update_mode = 4
-
-[node name="World" parent="SubViewportContainer/SubViewport" unique_id=1966478873 instance=ExtResource("2_0wfyh")]
+[node name="World" parent="." unique_id=1966478873 instance=ExtResource("2_0wfyh")]
 unique_name_in_owner = true
 
-[node name="Sprite" parent="SubViewportContainer/SubViewport/World/Backgrounds/FarAway" parent_id_path=PackedInt32Array(1966478873, 70455985) index="0" unique_id=518944460]
+[node name="Sprite" parent="World/Backgrounds/FarAway" parent_id_path=PackedInt32Array(1966478873, 70455985) index="0" unique_id=518944460]
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="SubViewportContainer/SubViewport/World" index="1" unique_id=307342213]
+[node name="Player" parent="World" index="1" unique_id=307342213]
 position = Vector2(400, 543)
 freeze = true
 freeze_mode = 1
-
-[node name="Control" type="Control" parent="SubViewportContainer/SubViewport" unique_id=1791547254]
-z_index = 1
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Score" type="Label" parent="SubViewportContainer/SubViewport/Control" unique_id=853272306]
-unique_name_in_owner = true
-visible = false
-texture_filter = 1
-layout_mode = 0
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -70.0
-offset_right = 70.0
-offset_bottom = 103.0
-grow_horizontal = 2
-text = "2322222"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("3_sugp2")
 
 [node name="IntroScreen" parent="." unique_id=1455413948 instance=ExtResource("4_tbgi4")]
 custom_maximum_size = Vector2(720, -1)
@@ -147,9 +103,35 @@ offset_bottom = 315.0
 [node name="MarginContainer" parent="GameOverMenu/ScorePanel" index="0" unique_id=2080587600]
 theme_override_constants/margin_left = 133
 
-[connection signal="hit_enviroment" from="SubViewportContainer/SubViewport/World/Player" to="." method="_on_player_hit_enviroment"]
+[node name="Control" type="Control" parent="." unique_id=1791547254]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Score" type="Label" parent="Control" unique_id=853272306]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -70.0
+offset_right = 70.0
+offset_bottom = 103.0
+grow_horizontal = 2
+text = "2322222"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_sugp2")
+
+[connection signal="hit_enviroment" from="World/Player" to="." method="_on_player_hit_enviroment"]
 [connection signal="started_game" from="IntroScreen" to="." method="_on_intro_screen_started_game"]
 
-[editable path="SubViewportContainer/SubViewport/World"]
+[editable path="World"]
 [editable path="IntroScreen"]
 [editable path="GameOverMenu"]

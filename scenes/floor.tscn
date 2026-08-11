@@ -1,15 +1,9 @@
 [gd_scene format=3 uid="uid://daup3whagkygu"]
 
-[ext_resource type="Texture2D" uid="uid://c57uivkxgyikv" path="res://assets/tappy_plane/PNG/groundGrass.png" id="1_ukw5w"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bhunq"]
 
 [node name="Floor" type="StaticBody2D" unique_id=1838703133]
 collision_layer = 2
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1554616325]
-position = Vector2(404, -36.199997)
-polygon = PackedVector2Array(251.09998, -35.5, 231, -16.4, 196.79999, -12.5, 192.09998, -12.5, 166.20001, 14.5, 129.40002, 14.5, 107.399994, 4.5, 67.899994, 4.5, 36, -25.5, 36, -27.5, -32.600006, -27.5, -55.600006, -12.5, -95.600006, -12.5, -151, -33.9, -151, -35.5, -153.6, -35.5, -229.1, -32.5, -247.9, -32.5, -272, -6.299999, -312, 3.9000015, -355.9, 1.5, -362.2, 1.5, -368, -4.299999, -368, -6.700001, -389.2, -4.5, -404, -4.5, -404, 35.5, 404, 35.5, 404, -4.6000004, 365.2, -13.5, 362, -13.5, 345, -35.2)
-
-[node name="GroundGrass" type="Sprite2D" parent="." unique_id=846855282]
-position = Vector2(0, -71.2)
-texture = ExtResource("1_ukw5w")
-centered = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1324777843]
+shape = SubResource("WorldBoundaryShape2D_bhunq")

@@ -16,7 +16,7 @@ func _ready() -> void:
 
 
 func load_key_value(key: String):
-	return config.get_value(SECTION_NAME, key)
+	return config.get_value(SECTION_NAME, key, 0)
 
 
 func save_key_value(key: String, value: String) -> void:

@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://bet4af4rosfqb"]
+
+[ext_resource type="Texture2D" uid="uid://dy5toixewda2o" path="res://assets/kenney_pixel-line-platformer/Tilemap/tilemap_packed.png" id="1_qe2f5"]
+[ext_resource type="Script" uid="uid://c5dr718onlogx" path="res://scripts/jetpack_controller.gd" id="1_u7di4"]
+
+[sub_resource type="Animation" id="Animation_qe2f5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-5, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Character:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_72lh8"]
+resource_name = "fly"
+loop_mode = 1
+step = 0.1
+
+[sub_resource type="Animation" id="Animation_u7di4"]
+resource_name = "walk"
+length = 0.19999999999999998
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-7, 2), Vector2(-6, -2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Character:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.09363999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_72lh8"]
+_data = {
+&"RESET": SubResource("Animation_qe2f5"),
+&"fly": SubResource("Animation_72lh8"),
+&"walk": SubResource("Animation_u7di4")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhunq"]
+
+[node name="JetpackController" type="RigidBody2D" unique_id=1042408190]
+collision_mask = 6
+gravity_scale = 0.5
+can_sleep = false
+contact_monitor = true
+max_contacts_reported = 3
+script = ExtResource("1_u7di4")
+force = Vector2(0, 500)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1619870354]
+libraries/ = SubResource("AnimationLibrary_72lh8")
+autoplay = &"fly"
+speed_scale = 0.8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=296008622]
+shape = SubResource("CircleShape2D_bhunq")
+
+[node name="Gun" type="Sprite2D" parent="." unique_id=1936092823]
+position = Vector2(-5, 5)
+rotation = 1.5707964
+texture = ExtResource("1_qe2f5")
+flip_v = true
+region_enabled = true
+region_rect = Rect2(0, 80, 16, 16)
+
+[node name="Character" type="Sprite2D" parent="." unique_id=279586016]
+texture = ExtResource("1_qe2f5")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(80, 64, 32, 16)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

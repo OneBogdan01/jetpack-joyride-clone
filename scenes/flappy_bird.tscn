@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://b8nimb5anw8sy"]
+
+[ext_resource type="Script" uid="uid://b7wr6lyaedhir" path="res://scripts/flappy_bird.gd" id="1_y51wb"]
+[ext_resource type="Texture2D" uid="uid://dpu6ud5oleo08" path="res://assets/tappy_plane/PNG/Planes/planeBlue1.png" id="2_p5ecu"]
+[ext_resource type="Texture2D" uid="uid://c4l2418mr66dv" path="res://assets/tappy_plane/PNG/Planes/planeBlue2.png" id="3_vdnm1"]
+[ext_resource type="Texture2D" uid="uid://d14gbysoprrfi" path="res://assets/tappy_plane/PNG/Planes/planeBlue3.png" id="4_f5g8r"]
+[ext_resource type="AudioStream" uid="uid://d3d0f06b0p0l7" path="res://assets/impact_sounds/Audio/footstep_carpet_000.ogg" id="5_g8tsy"]
+[ext_resource type="AudioStream" uid="uid://pfwgrgy6vpn7" path="res://assets/impact_sounds/Audio/impactBell_heavy_001.ogg" id="6_1rrk6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bhunq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_p5ecu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vdnm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_f5g8r")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhunq"]
+radius = 30.066593
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fjrip"]
+playback_mode = 1
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("5_g8tsy")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bhunq"]
+playback_mode = 1
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("6_1rrk6")
+
+[node name="FlappyBird" type="RigidBody2D" unique_id=307342213]
+collision_mask = 6
+gravity_scale = 1.5
+can_sleep = false
+contact_monitor = true
+max_contacts_reported = 3
+script = ExtResource("1_y51wb")
+force_on_tap = 600.0
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=865552095]
+sprite_frames = SubResource("SpriteFrames_bhunq")
+autoplay = "default"
+frame_progress = 0.60172296
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2073540099]
+position = Vector2(3, -1)
+shape = SubResource("CircleShape2D_bhunq")
+
+[node name="TapSound" type="AudioStreamPlayer" parent="." unique_id=711253038]
+stream = SubResource("AudioStreamRandomizer_fjrip")
+
+[node name="DeadSound" type="AudioStreamPlayer" parent="." unique_id=990962787]
+stream = SubResource("AudioStreamRandomizer_bhunq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="hit_enviroment" from="." to="DeadSound" method="play"]
+[connection signal="tapped" from="." to="TapSound" method="play"]
