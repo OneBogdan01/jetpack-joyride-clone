@@ -26,7 +26,7 @@ ScreenshotUtility="*uid://bo4d5i8xo7dfb"
 
 [display]
 
-window/size/viewport_width=512
+window/size/viewport_width=480
 window/size/viewport_height=256
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"

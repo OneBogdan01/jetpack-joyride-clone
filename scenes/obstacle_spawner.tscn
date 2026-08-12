@@ -8,6 +8,6 @@ script = ExtResource("1_vyba0")
 node_to_spawn = ExtResource("2_ra2ui")
 
 [node name="Timer" type="Timer" parent="." unique_id=1722868276]
-wait_time = 2.0
+wait_time = 5.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

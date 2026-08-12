@@ -18,6 +18,7 @@ streams_count = 1
 stream_0/stream = ExtResource("3_lqpsc")
 
 [node name="ObstaclePair" type="Area2D" unique_id=1745320449]
+scale = Vector2(0.22337775, 0.22337775)
 collision_layer = 4
 script = ExtResource("1_kt73a")
 

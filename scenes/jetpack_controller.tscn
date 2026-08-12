@@ -3,6 +3,14 @@
 [ext_resource type="Texture2D" uid="uid://dy5toixewda2o" path="res://assets/kenney_pixel-line-platformer/Tilemap/tilemap_packed.png" id="1_qe2f5"]
 [ext_resource type="Script" uid="uid://c5dr718onlogx" path="res://scripts/jetpack_controller.gd" id="1_u7di4"]
 
+[sub_resource type="Curve" id="Curve_72lh8"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), -0.13896088, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_u7di4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), -0.13896088, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="Animation" id="Animation_qe2f5"]
 length = 0.001
 tracks/0/type = "value"
@@ -37,7 +45,7 @@ step = 0.1
 
 [sub_resource type="Animation" id="Animation_u7di4"]
 resource_name = "walk"
-length = 0.19999999999999998
+length = 0.2
 loop_mode = 1
 step = 0.2
 tracks/0/type = "value"
@@ -74,14 +82,15 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bhunq"]
 
-[node name="JetpackController" type="RigidBody2D" unique_id=1042408190]
+[node name="JetpackController" type="CharacterBody2D" unique_id=1309846618]
 collision_mask = 6
-gravity_scale = 0.5
-can_sleep = false
-contact_monitor = true
-max_contacts_reported = 3
 script = ExtResource("1_u7di4")
-force = Vector2(0, 500)
+force_up = 50.0
+accelearation_curve_up = SubResource("Curve_72lh8")
+acceleration_time_up = 0.2
+force_down = 30.0
+accelearation_curve_down = SubResource("Curve_u7di4")
+acceleration_time_down = 0.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1619870354]
 libraries/ = SubResource("AnimationLibrary_72lh8")
@@ -105,5 +114,4 @@ hframes = 2
 region_enabled = true
 region_rect = Rect2(80, 64, 32, 16)
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=711718505]

@@ -7,6 +7,10 @@ extends Node2D
 signal score_triggered
 
 
+func _ready() -> void:
+	start()
+
+
 func start():
 	spawn()
 	timer.start()
