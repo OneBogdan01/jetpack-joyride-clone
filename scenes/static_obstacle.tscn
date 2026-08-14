@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://chmpqfa1drtej"]
+
+[ext_resource type="Script" uid="uid://beb8hstwaspw4" path="res://scripts/static_obstacle.gd" id="1_hnkvu"]
+[ext_resource type="Script" uid="uid://b58gn8ixkwtt3" path="res://scripts/mover.gd" id="1_qlhre"]
+[ext_resource type="PackedScene" uid="uid://c7uwgteikrpgc" path="res://scenes/obstacle.tscn" id="2_hnkvu"]
+[ext_resource type="Script" uid="uid://c2ymil5jntann" path="res://scripts/moving_obstacle.gd" id="2_p8fto"]
+
+[sub_resource type="Curve2D" id="Curve2D_h8ci5"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -32.714684, 37.812027, 0, 0, 0, 0, -40.520763, -29.292791, 0, 0, 0, 0, -11.6300535, -48.62861, 0, 0, 0, 0, -23.722221, 44.01427, 0, 0, 0, 0, -32.714684, 37.812027)
+}
+point_count = 5
+
+[node name="Obstacle" type="Node2D" unique_id=2020203024]
+script = ExtResource("1_qlhre")
+
+[node name="StaticObstacle" type="Path2D" parent="." unique_id=177351125]
+curve = SubResource("Curve2D_h8ci5")
+script = ExtResource("1_hnkvu")
+max_points = 4
+min_max_distance = 50.0
+min_max_range = Vector2(-5, 5)
+
+[node name="MovingObstacle" type="PathFollow2D" parent="StaticObstacle" unique_id=311495743]
+position = Vector2(-32.714684, 37.812027)
+rotates = false
+script = ExtResource("2_p8fto")
+speed = 0.5
+
+[node name="Obstacle" parent="StaticObstacle/MovingObstacle" unique_id=1998714828 instance=ExtResource("2_hnkvu")]

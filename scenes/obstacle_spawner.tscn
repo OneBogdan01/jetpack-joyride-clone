@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://vecp3351bi4q"]
 
 [ext_resource type="Script" uid="uid://bcge70yte703t" path="res://scripts/obstacle_spawner.gd" id="1_vyba0"]
-[ext_resource type="PackedScene" uid="uid://bvm7d85w75dst" path="res://scenes/obstacle_pair.tscn" id="2_ra2ui"]
+[ext_resource type="PackedScene" uid="uid://chmpqfa1drtej" path="res://scenes/static_obstacle.tscn" id="2_ra2ui"]
 
 [node name="ObstacleSpawner" type="Node2D" unique_id=720864451]
 script = ExtResource("1_vyba0")

@@ -2,6 +2,7 @@ class_name ObstacleSpawner
 extends Node2D
 
 @export var node_to_spawn: PackedScene
+
 @onready var timer: Timer = $Timer
 
 signal score_triggered
@@ -21,8 +22,8 @@ func stop():
 
 
 func spawn():
-	var instance = node_to_spawn.instantiate() as ObstaclePair
-	instance.score_triggered.connect(_score_triggered)
+	var instance = node_to_spawn.instantiate()
+
 	add_child(instance)
 
 

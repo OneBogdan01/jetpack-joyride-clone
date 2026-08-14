@@ -14,28 +14,22 @@ obstacle_spawner = NodePath("World/ObstacleSpawner")
 [node name="World" parent="." unique_id=1966478873 instance=ExtResource("2_0wfyh")]
 unique_name_in_owner = true
 
-[node name="Sprite" parent="World/Backgrounds/FarAway" parent_id_path=PackedInt32Array(1966478873, 70455985) index="0" unique_id=518944460]
-metadata/_edit_lock_ = true
+[node name="UI" type="CanvasLayer" parent="." unique_id=1637280733]
 
-[node name="Player" parent="World" index="1" unique_id=307342213]
-position = Vector2(400, 543)
-freeze = true
-freeze_mode = 1
-
-[node name="IntroScreen" parent="." unique_id=1455413948 instance=ExtResource("4_tbgi4")]
+[node name="IntroScreen" parent="UI" unique_id=1455413948 instance=ExtResource("4_tbgi4")]
 custom_maximum_size = Vector2(720, -1)
 mouse_filter = 2
 script = ExtResource("5_tefeu")
 offset_position = Vector2(0, 25)
 
-[node name="TextureRect" parent="IntroScreen" index="0" unique_id=1882033945]
+[node name="TextureRect" parent="UI/IntroScreen" index="0" unique_id=1882033945]
 offset_left = 13.0
 offset_top = 140.0
 offset_right = 437.0
 offset_bottom = 278.0
 stretch_mode = 5
 
-[node name="HighscoreText" type="Label" parent="IntroScreen" unique_id=1456974614]
+[node name="HighscoreText" type="Label" parent="UI/IntroScreen" unique_id=1456974614]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 1
@@ -49,7 +43,7 @@ text = "High score"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Highscore" type="Label" parent="IntroScreen/HighscoreText" unique_id=2011079745]
+[node name="Highscore" type="Label" parent="UI/IntroScreen/HighscoreText" unique_id=2011079745]
 unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 1
@@ -67,7 +61,7 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TitleScreen" type="Label" parent="IntroScreen" unique_id=3003413]
+[node name="TitleScreen" type="Label" parent="UI/IntroScreen" unique_id=3003413]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -87,11 +81,11 @@ The fake bird"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GameOverMenu" parent="." unique_id=1483635232 instance=ExtResource("4_jyhfs")]
+[node name="GameOverMenu" parent="UI" unique_id=1483635232 instance=ExtResource("4_jyhfs")]
 unique_name_in_owner = true
 visible = false
 
-[node name="ScorePanel" parent="GameOverMenu" index="1" unique_id=1956653196]
+[node name="ScorePanel" parent="UI/GameOverMenu" index="1" unique_id=1956653196]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_right = 0.5
@@ -100,10 +94,10 @@ offset_top = -62.0
 offset_right = 282.0
 offset_bottom = 315.0
 
-[node name="MarginContainer" parent="GameOverMenu/ScorePanel" index="0" unique_id=2080587600]
+[node name="MarginContainer" parent="UI/GameOverMenu/ScorePanel" index="0" unique_id=2080587600]
 theme_override_constants/margin_left = 133
 
-[node name="Control" type="Control" parent="." unique_id=1791547254]
+[node name="Control" type="Control" parent="UI" unique_id=1791547254]
 z_index = 1
 layout_mode = 3
 anchors_preset = 15
@@ -113,7 +107,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Score" type="Label" parent="Control" unique_id=853272306]
+[node name="Score" type="Label" parent="UI/Control" unique_id=853272306]
 unique_name_in_owner = true
 visible = false
 texture_filter = 1
@@ -129,9 +123,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("3_sugp2")
 
-[connection signal="hit_enviroment" from="World/Player" to="." method="_on_player_hit_enviroment"]
-[connection signal="started_game" from="IntroScreen" to="." method="_on_intro_screen_started_game"]
+[connection signal="started_game" from="UI/IntroScreen" to="." method="_on_intro_screen_started_game"]
 
 [editable path="World"]
-[editable path="IntroScreen"]
-[editable path="GameOverMenu"]
+[editable path="UI/IntroScreen"]
+[editable path="UI/GameOverMenu"]

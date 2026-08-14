@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d3q1gy2ckohdo"]
+
+[ext_resource type="Script" uid="uid://drqodtrnvb1jy" path="res://scripts/obstacle_destroyer.gd" id="1_6ej2x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ej2x"]
+size = Vector2(20, 480)
+
+[node name="ObstacleDestroyer" type="Area2D" unique_id=732822133]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1_6ej2x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=417983286]
+shape = SubResource("RectangleShape2D_6ej2x")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

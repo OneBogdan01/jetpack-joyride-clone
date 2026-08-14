@@ -14,15 +14,15 @@ func _ready() -> void:
 	if value:
 		highscore.text = str(value)
 	# start lower
-	world.player.global_position -= offset_position
-	var player_tween = create_tween()
-	player_tween.set_trans(Tween.TRANS_SINE)
-	player_tween.set_loops()
-	player_tween.tween_property(world.player, "global_position", world.player.global_position + offset_position, duration)
-	player_tween.tween_property(world.player, "global_position", world.player.global_position - offset_position, duration)
+	#world.player.global_position -= offset_position
+	#var player_tween = create_tween()
+	#player_tween.set_trans(Tween.TRANS_SINE)
+	#player_tween.set_loops()
+	#player_tween.tween_property(world.player, "global_position", world.player.global_position + offset_position, duration)
+	#player_tween.tween_property(world.player, "global_position", world.player.global_position - offset_position, duration)
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("tap"):
+	if event.is_action_pressed("movement_action"):
 		started_game.emit()
 		queue_free()

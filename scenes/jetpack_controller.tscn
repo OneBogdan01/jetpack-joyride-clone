@@ -114,4 +114,5 @@ hframes = 2
 region_enabled = true
 region_rect = Rect2(80, 64, 32, 16)
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=711718505]
+[node name="ProjectilesParticles" type="CPUParticles2D" parent="." unique_id=711718505]
+emitting = false

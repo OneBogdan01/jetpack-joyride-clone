@@ -2,6 +2,7 @@ class_name JetpackController
 extends CharacterBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var projectiles_particles: CPUParticles2D = $ProjectilesParticles
 
 @export_category("Force Up")
 @export var force_up: float
@@ -25,6 +26,7 @@ var moving_down = true:
 	set(value):
 		moving_down = value
 		_time_in_state = 0.0
+		projectiles_particles.emitting = !value
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -59,12 +61,3 @@ func _physics_process(delta: float) -> void:
 		animation_player.assigned_animation = "fly"
 
 	move_and_slide()
-
-
-func _on_body_exited(body: Node) -> void:
-	if body.is_in_group("floor"):
-		animation_player.assigned_animation = "fly"
-	elif body.is_in_group("obstacles"):
-		_dead = true
-		hit_obstacle.emit()
-		print("Player hit an obstacle" + body.name)

@@ -41,4 +41,4 @@ func _on_player_hit_enviroment() -> void:
 func _on_intro_screen_started_game() -> void:
 	score.show()
 	obstacle_spawner.start()
-	world.player.freeze = false
+	#world.player.freeze = false

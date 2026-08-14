@@ -13,7 +13,7 @@ config_version=5
 config/name="Jetpack Joyride"
 config/description="A fappy bird clone for the 20 games challenge."
 config/tags=PackedStringArray("2d")
-run/main_scene="uid://d1uqtum4t7uku"
+run/main_scene="uid://brjr0injhkxs2"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 run/max_fps=60
 config/icon="uid://dpu6ud5oleo08"
@@ -63,7 +63,7 @@ screenshot={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Enviroment"
 2d_physics/layer_3="Score"
-2d_physics/layer_4="Floor"
+2d_physics/layer_4="Obstacles"
 
 [physics]
 

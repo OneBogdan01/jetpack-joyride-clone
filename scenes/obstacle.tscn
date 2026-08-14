@@ -1,18 +1,40 @@
-[gd_scene format=3 uid="uid://dd2uyn5qny0jq"]
+[gd_scene format=3 uid="uid://c7uwgteikrpgc"]
 
-[ext_resource type="Script" uid="uid://b58gn8ixkwtt3" path="res://scripts/mover.gd" id="1_cjuko"]
-[ext_resource type="Texture2D" uid="uid://s4y8t250txmt" path="res://assets/tappy_plane/PNG/rockGrass.png" id="1_drdry"]
+[ext_resource type="Texture2D" uid="uid://dy5toixewda2o" path="res://assets/kenney_pixel-line-platformer/Tilemap/tilemap_packed.png" id="1_7ukg5"]
 
-[node name="Obstacle" type="StaticBody2D" unique_id=766184518]
-collision_layer = 2
-script = ExtResource("1_cjuko")
-speed = 600.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnkvu"]
+atlas = ExtResource("1_7ukg5")
+region = Rect2(16, 80, 16, 16)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1408861851]
-position = Vector2(0, -239)
-polygon = PackedVector2Array(75, 0, 58, 0, 58, 0.6, 33, 115.8, 33, 120.3, 25.1, 130, 23.5, 130, 0, 221, 0, 239, 108, 239, 108, 214.7, 106, 190.8, 106, 182.5, 99.2, 170, 92, 111.8, 92, 103.3, 84.9, 95, 75, 6.8)
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8fto"]
+atlas = ExtResource("1_7ukg5")
+region = Rect2(32, 80, 16, 16)
 
-[node name="RockGrass" type="Sprite2D" parent="." unique_id=1763723585]
-position = Vector2(0, -239)
-texture = ExtResource("1_drdry")
-centered = false
+[sub_resource type="SpriteFrames" id="SpriteFrames_bhunq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnkvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8fto")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhunq"]
+radius = 7.071068
+
+[node name="Obstacle" type="Area2D" unique_id=1998714828]
+collision_layer = 8
+collision_mask = 3
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=510718856]
+sprite_frames = SubResource("SpriteFrames_bhunq")
+autoplay = "default"
+frame_progress = 0.27214307
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1952472466]
+shape = SubResource("CircleShape2D_bhunq")

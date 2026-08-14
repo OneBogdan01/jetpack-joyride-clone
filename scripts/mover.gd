@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Node2D
 
 @export var direction: Vector2 = Vector2.LEFT
 @export var speed = 100.0
