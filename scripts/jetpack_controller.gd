@@ -18,7 +18,7 @@ extends CharacterBody2D
 
 var _dead := false
 
-signal hit_obstacle
+signal obstacle_hit
 
 var _time_in_state: = 0.0
 
@@ -61,3 +61,7 @@ func _physics_process(delta: float) -> void:
 		animation_player.assigned_animation = "fly"
 
 	move_and_slide()
+
+
+func hit_obstacle():
+	obstacle_hit.emit()

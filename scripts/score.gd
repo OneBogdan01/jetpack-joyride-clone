@@ -11,5 +11,5 @@ func _ready() -> void:
 	current_score = 0
 
 
-func increment():
-	current_score += 1
+func increment(distance: float):
+	current_score = int(distance)

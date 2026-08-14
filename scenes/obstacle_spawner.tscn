@@ -10,4 +10,15 @@ node_to_spawn = ExtResource("2_ra2ui")
 [node name="Timer" type="Timer" parent="." unique_id=1722868276]
 wait_time = 5.0
 
+[node name="ScoreUpdate" type="Timer" parent="." unique_id=1148833239]
+wait_time = 0.16
+
+[node name="SpawnArea" type="Path2D" parent="." unique_id=1586214297]
+
+[node name="SampleSpawn" type="PathFollow2D" parent="SpawnArea" unique_id=608653811]
+unique_name_in_owner = true
+position = Vector2(1, 0)
+rotates = false
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ScoreUpdate" to="." method="_on_score_update_timeout"]

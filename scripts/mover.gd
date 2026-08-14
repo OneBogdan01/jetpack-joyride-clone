@@ -1,3 +1,4 @@
+class_name Mover
 extends Node2D
 
 @export var direction: Vector2 = Vector2.LEFT

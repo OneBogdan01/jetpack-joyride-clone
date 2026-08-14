@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://d0uyelmm2c8xq"]
+
+[ext_resource type="Script" uid="uid://b15yq36ny8kwl" path="res://scripts/scripts/asset_store_generator.gd" id="1_armje"]
+[ext_resource type="PackedScene" uid="uid://bet4af4rosfqb" path="res://scenes/jetpack_controller.tscn" id="1_uevei"]
+
+[node name="AssetStoreGenerator" type="Control" unique_id=933942628]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_armje")
+
+[node name="Screenshots" type="Control" parent="." unique_id=471624409]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Icon" type="Control" parent="Screenshots" unique_id=177398076]
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="JetpackController" parent="Screenshots/Icon" unique_id=1309846618 instance=ExtResource("1_uevei")]
+position = Vector2(32, 32)
+scale = Vector2(4, 4)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1403147132]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=922515628]
+handle_input_locally = false
+size = Vector2i(40, 40)
+render_target_update_mode = 0

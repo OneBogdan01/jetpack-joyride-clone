@@ -15,7 +15,11 @@ point_count = 3
 [node name="Obstacle" type="Node2D" unique_id=2020203024]
 script = ExtResource("1_qlhre")
 
+[node name="Obstacle" parent="." unique_id=1998714828 instance=ExtResource("2_hnkvu")]
+position = Vector2(0, 70.459984)
+
 [node name="StaticObstacle" type="Path2D" parent="." unique_id=177351125]
+scale = Vector2(0.9049807, 3.9144435)
 curve = SubResource("Curve2D_h8ci5")
 script = ExtResource("1_hnkvu")
 
@@ -25,4 +29,7 @@ rotates = false
 script = ExtResource("2_p8fto")
 speed = 1.0
 
-[node name="Obstacle" parent="StaticObstacle/MovingObstacle" unique_id=1998714828 instance=ExtResource("2_hnkvu")]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="StaticObstacle/MovingObstacle" unique_id=2126187250]
+remote_path = NodePath("../../../Obstacle")
+update_rotation = false
+update_scale = false
