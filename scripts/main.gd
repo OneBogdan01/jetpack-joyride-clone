@@ -1,6 +1,5 @@
 extends Node
 
-@export var obstacle_spawner: ObstacleSpawner
 @onready var game_over_menu: GameOver = %GameOverMenu
 
 @onready var score: Score = %Score
@@ -10,7 +9,7 @@ var _highscore := -1
 
 
 func _ready() -> void:
-	obstacle_spawner.score_triggered.connect(score.increment)
+	world.obstacle_spawner.score_triggered.connect(score.increment)
 	world.player.obstacle_hit.connect(_on_player_hit_enviroment)
 
 
@@ -31,7 +30,7 @@ func determine_high_score():
 
 func _on_player_hit_enviroment() -> void:
 	print("Game Over!")
-	obstacle_spawner.call_deferred("stop")
+	world.obstacle_spawner.call_deferred("stop")
 	world.stop_movement()
 	game_over_menu.show()
 	game_over_menu.score_number.text = str(score.current_score)
@@ -40,5 +39,7 @@ func _on_player_hit_enviroment() -> void:
 
 
 func _on_intro_screen_started_game() -> void:
+	await world.start()
+
 	score.show()
-	obstacle_spawner.start()
+	%ScoreContainer.show()

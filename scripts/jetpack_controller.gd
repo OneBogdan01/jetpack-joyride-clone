@@ -17,6 +17,7 @@ extends CharacterBody2D
 @export var acceleration_time_down: float = 1.0
 
 var _dead := false
+var allow_input = false
 
 signal obstacle_hit
 
@@ -30,6 +31,8 @@ var moving_down = true:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if allow_input == false:
+		return
 	if event.is_action_pressed("movement_action"):
 		moving_down = false
 

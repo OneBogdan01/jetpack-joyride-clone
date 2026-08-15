@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://dj1ntytvld6u2"]
+
+[ext_resource type="Script" uid="uid://bhmpcrqy6ldv" path="res://scripts/intro_screen.gd" id="1_867q5"]
+
+[sub_resource type="Animation" id="Animation_orp5c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_aqp6e"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ih0o2"]
+resource_name = "press_to_play"
+length = 0.705
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer/VBoxContainer/Tap to start:theme_override_colors/font_color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5590846),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.2627451, 0.2901961, 0.37254903, 1), Color(0.53333336, 0.67058825, 0.078431375, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_orp5c"]
+_data = {
+&"RESET": SubResource("Animation_orp5c"),
+&"fade_out": SubResource("Animation_aqp6e"),
+&"press_to_play": SubResource("Animation_ih0o2")
+}
+
+[node name="IntroScreen" type="Control" unique_id=697293277]
+custom_maximum_size = Vector2(720, -1)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -128.0
+offset_right = 240.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_867q5")
+offset_position = Vector2(0, 25)
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1518296187]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -25.5
+offset_right = 46.0
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1060233585]
+layout_mode = 2
+
+[node name="TitleScreen" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1283399545]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Rabbit Gunner"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tap to start" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1700373042]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2627451, 0.2901961, 0.37254903, 1)
+text = "Press anything to start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1281504677]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_orp5c")
+autoplay = &"press_to_play"

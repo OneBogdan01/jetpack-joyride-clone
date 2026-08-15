@@ -79,6 +79,52 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="Animation" id="Animation_i7141"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-16, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(232, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_qfnet"]
+resource_name = "intro"
+length = 1.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(-16, -0.2462116, -18.48396, 0.4961943, 37.25103, 213, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i7141"]
+_data = {
+&"RESET": SubResource("Animation_i7141"),
+&"intro": SubResource("Animation_qfnet")
+}
+
 [sub_resource type="Curve" id="Curve_71j4m"]
 bake_resolution = 10
 _data = [Vector2(0, 0), 0.0, 0.49204832, 0, 1, Vector2(1, 1), 2.2887702, 0.0, 1, 0]
@@ -125,15 +171,23 @@ rotation = -3.1415925
 position = Vector2(-248, 125)
 
 [node name="ObstacleSpawner" parent="." unique_id=720864451 instance=ExtResource("5_71j4m")]
+unique_name_in_owner = true
 position = Vector2(437, 125)
 
 [node name="SpawnArea" parent="ObstacleSpawner" index="2" unique_id=1586214297]
 curve = SubResource("Curve2D_qfnet")
 
+[node name="SampleSpawn" parent="ObstacleSpawner/SpawnArea" index="0" unique_id=608653811]
+position = Vector2(0, -111)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=729316282]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_i7141")
+
 [node name="Player" parent="." unique_id=1042408190 instance=ExtResource("5_qfnet")]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(213, 220)
+position = Vector2(-16, 232)
 collision_mask = 14
 slide_on_ceiling = false
 platform_floor_layers = 4294901768
@@ -146,6 +200,9 @@ force_down = 6.0
 top_speed_down = 150.0
 accelearation_curve_down = SubResource("Curve_qfnet")
 acceleration_time_down = 0.45
+
+[node name="PlayerPosition" type="Marker2D" parent="." unique_id=1216279545]
+position = Vector2(213, 232)
 
 [connection signal="obstacle_speed_changed" from="ObstacleSpawner" to="." method="update_ground_speed"]
 

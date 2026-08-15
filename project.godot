@@ -16,7 +16,7 @@ config/tags=PackedStringArray("2d")
 run/main_scene="uid://d1uqtum4t7uku"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 run/max_fps=60
-config/icon="uid://dvi3g2845yhxq"
+config/icon="uid://5yo6vw2dbsls"
 
 [autoload]
 

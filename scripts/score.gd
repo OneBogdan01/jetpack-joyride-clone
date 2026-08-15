@@ -4,7 +4,7 @@ extends Label
 var current_score := 0:
 	set(value):
 		current_score = value
-		text = str(current_score)
+		text = str(current_score) + "m"
 
 
 func _ready() -> void:

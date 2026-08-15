@@ -22,8 +22,8 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-5, 5)]
+"update": 1,
+"values": [Vector2(-6, 3)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -55,7 +55,7 @@ tracks/0/path = NodePath("Gun:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
+"times": PackedFloat32Array(0, 0.093946405),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [Vector2(-7, 2), Vector2(-6, -2)]
@@ -101,7 +101,7 @@ speed_scale = 0.8
 shape = SubResource("CircleShape2D_bhunq")
 
 [node name="Gun" type="Sprite2D" parent="." unique_id=1936092823]
-position = Vector2(-5, 5)
+position = Vector2(-6, 3)
 rotation = 1.5707964
 texture = ExtResource("1_qe2f5")
 flip_v = true
@@ -115,4 +115,11 @@ region_enabled = true
 region_rect = Rect2(80, 64, 32, 16)
 
 [node name="ProjectilesParticles" type="CPUParticles2D" parent="." unique_id=711718505]
+position = Vector2(-7, 6)
 emitting = false
+amount = 20
+direction = Vector2(0, 1)
+spread = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 150.0
+initial_velocity_max = 150.0
