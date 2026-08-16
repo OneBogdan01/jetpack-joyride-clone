@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://c7uwgteikrpgc"]
 
-[ext_resource type="Texture2D" uid="uid://dy5toixewda2o" path="res://assets/kenney_pixel-line-platformer/Tilemap/tilemap_packed.png" id="1_7ukg5"]
-[ext_resource type="Script" uid="uid://mfhn5u60vm6b" path="res://scripts/obstacle.gd" id="1_drdry"]
+[ext_resource type="Script" uid="uid://mfhn5u60vm6b" path="res://scripts/obstacle.gd" id="1_vie5o"]
+[ext_resource type="Texture2D" uid="uid://dy5toixewda2o" path="res://assets/kenney_pixel-line-platformer/Tilemap/tilemap_packed.png" id="2_ogg2i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hnkvu"]
-atlas = ExtResource("1_7ukg5")
+atlas = ExtResource("2_ogg2i")
 region = Rect2(16, 80, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p8fto"]
-atlas = ExtResource("1_7ukg5")
+atlas = ExtResource("2_ogg2i")
 region = Rect2(32, 80, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bhunq"]
@@ -28,10 +28,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_bhunq"]
 radius = 7.071068
 
-[node name="Obstacle" type="Area2D" unique_id=1998714828]
+[node name="Bee" type="Area2D" unique_id=1998714828]
 collision_layer = 8
 collision_mask = 3
-script = ExtResource("1_drdry")
+script = ExtResource("1_vie5o")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=510718856]
 sprite_frames = SubResource("SpriteFrames_bhunq")

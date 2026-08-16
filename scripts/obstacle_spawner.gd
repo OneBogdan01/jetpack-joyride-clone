@@ -32,8 +32,9 @@ func spawn():
 	var instance = node_to_spawn.instantiate() as Mover
 	instance.speed = obstacle_speed
 	sample_spawn.progress_ratio = randf()
+	instance.position = sample_spawn.position
+	print(instance.position)
 	add_child(instance)
-	instance.global_position = sample_spawn.global_position
 
 
 func _on_timer_timeout() -> void:

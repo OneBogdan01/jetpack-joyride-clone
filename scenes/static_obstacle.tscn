@@ -2,34 +2,33 @@
 
 [ext_resource type="Script" uid="uid://beb8hstwaspw4" path="res://scripts/static_obstacle.gd" id="1_hnkvu"]
 [ext_resource type="Script" uid="uid://b58gn8ixkwtt3" path="res://scripts/mover.gd" id="1_qlhre"]
-[ext_resource type="PackedScene" uid="uid://c7uwgteikrpgc" path="res://scenes/obstacle.tscn" id="2_hnkvu"]
 [ext_resource type="Script" uid="uid://c2ymil5jntann" path="res://scripts/moving_obstacle.gd" id="2_p8fto"]
+[ext_resource type="PackedScene" uid="uid://c7uwgteikrpgc" path="res://scenes/bee.tscn" id="4_qlhre"]
 
 [sub_resource type="Curve2D" id="Curve2D_h8ci5"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, -30, 0, 0, 0, 0, 0, 18)
+"points": PackedVector2Array(0, 0, 0, 0, 0, -20, 0, 0, 0, 0, 0, 20)
 }
-point_count = 3
+point_count = 2
 
-[node name="Obstacle" type="Node2D" unique_id=2020203024]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
+
+[node name="Obstacle" type="AnimatableBody2D" unique_id=963683536]
+collision_layer = 8
+collision_mask = 2
 script = ExtResource("1_qlhre")
 
-[node name="Obstacle" parent="." unique_id=1998714828 instance=ExtResource("2_hnkvu")]
-position = Vector2(0, 70.459984)
-
 [node name="StaticObstacle" type="Path2D" parent="." unique_id=177351125]
-scale = Vector2(0.9049807, 3.9144435)
 curve = SubResource("Curve2D_h8ci5")
 script = ExtResource("1_hnkvu")
 
 [node name="MovingObstacle" type="PathFollow2D" parent="StaticObstacle" unique_id=311495743]
-position = Vector2(0, 18)
+position = Vector2(0, -20)
 rotates = false
+loop = false
 script = ExtResource("2_p8fto")
-speed = 1.0
+obstacle = ExtResource("4_qlhre")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="StaticObstacle/MovingObstacle" unique_id=2126187250]
-remote_path = NodePath("../../../Obstacle")
-update_rotation = false
-update_scale = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1078535404]
+shape = SubResource("RectangleShape2D_bhunq")
