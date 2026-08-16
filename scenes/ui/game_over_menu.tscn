@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://dg0usitkciyft"]
+
+[ext_resource type="Script" uid="uid://dkfphfssxyjeh" path="res://scripts/game_over.gd" id="1_7nx0y"]
+[ext_resource type="Texture2D" uid="uid://vprcm0rwkfml" path="res://assets/tappy_plane/PNG/UI/UIbg.png" id="3_5d0qp"]
+[ext_resource type="Script" uid="uid://f7yq040b4eat" path="res://scripts/scripts/fade_in.gd" id="3_i4hgn"]
+[ext_resource type="Script" uid="uid://cnffebgs27hwk" path="res://scripts/score.gd" id="4_5d0qp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i4hgn"]
+texture = ExtResource("3_5d0qp")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rvyv1"]
+
+[node name="GameOverMenu" type="Control" unique_id=1624671540]
+process_mode = 3
+custom_maximum_size = Vector2(720, -1)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7nx0y")
+
+[node name="ButtonContainer" type="PanelContainer" parent="." unique_id=1586968809]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -109.0
+offset_right = 132.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_i4hgn")
+script = ExtResource("3_i4hgn")
+
+[node name="MarginContainer" type="MarginContainer" parent="ButtonContainer" unique_id=1288273088]
+layout_mode = 2
+theme_override_constants/margin_bottom = 8
+
+[node name="BoxContainer" type="BoxContainer" parent="ButtonContainer/MarginContainer" unique_id=733326930]
+layout_mode = 2
+alignment = 1
+vertical = true
+
+[node name="GameOver" type="Label" parent="ButtonContainer/MarginContainer/BoxContainer" unique_id=1543330454]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ButtonContainer/MarginContainer/BoxContainer" unique_id=108653086]
+layout_mode = 2
+
+[node name="ScoreContainer" type="PanelContainer" parent="ButtonContainer/MarginContainer/BoxContainer/HBoxContainer" unique_id=458462941]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_rvyv1")
+script = ExtResource("3_i4hgn")
+
+[node name="MarginContainer" type="MarginContainer" parent="ButtonContainer/MarginContainer/BoxContainer/HBoxContainer/ScoreContainer" unique_id=1871790713]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="BoxContainer" type="GridContainer" parent="ButtonContainer/MarginContainer/BoxContainer/HBoxContainer/ScoreContainer/MarginContainer" unique_id=1777708048]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ButtonContainer/MarginContainer/BoxContainer/HBoxContainer/ScoreContainer/MarginContainer/BoxContainer" unique_id=1913403722]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ButtonContainer/MarginContainer/BoxContainer/HBoxContainer/ScoreContainer/MarginContainer/BoxContainer/VBoxContainer" unique_id=1409488837]
+layout_mode = 2
+text = "Score:"
+
+[node name="ScoreNumber" type="Label" parent="ButtonContainer/MarginContainer/BoxContainer/HBoxContainer/ScoreContainer/MarginContainer/BoxContainer/VBoxContainer/Label" unique_id=625976389]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 1
+offset_left = 34.0
+offset_right = 78.0
+offset_bottom = 12.0
+size_flags_horizontal = 3
+text = "21231231231m"
+script = ExtResource("4_5d0qp")
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="ButtonContainer/MarginContainer/BoxContainer/HBoxContainer/ScoreContainer/MarginContainer/BoxContainer" unique_id=1007989396]
+layout_mode = 2
+
+[node name="HighscoreText" type="Label" parent="ButtonContainer/MarginContainer/BoxContainer/HBoxContainer/ScoreContainer/MarginContainer/BoxContainer/VBoxContainer2" unique_id=570949445]
+modulate = Color(1, 1, 1, 0.84705883)
+texture_filter = 1
+layout_mode = 2
+text = "Best:"
+horizontal_alignment = 3
+
+[node name="HighScoreNumber" type="Label" parent="ButtonContainer/MarginContainer/BoxContainer/HBoxContainer/ScoreContainer/MarginContainer/BoxContainer/VBoxContainer2" unique_id=585931649]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.84705883)
+texture_filter = 1
+layout_mode = 2
+text = "123213213"
+
+[node name="Play" type="Button" parent="ButtonContainer/MarginContainer/BoxContainer" unique_id=1879368016]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Play Again"
+
+[node name="Quit" type="Button" parent="ButtonContainer/MarginContainer/BoxContainer" unique_id=1746019311]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit
+"
+
+[connection signal="visibility_changed" from="ButtonContainer" to="ButtonContainer" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="ButtonContainer/MarginContainer/BoxContainer/HBoxContainer/ScoreContainer" to="ButtonContainer/MarginContainer/BoxContainer/HBoxContainer/ScoreContainer" method="_on_visibility_changed"]

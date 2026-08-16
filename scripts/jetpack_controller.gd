@@ -21,7 +21,7 @@ var allow_input = false
 
 signal obstacle_hit
 
-var _time_in_state: = 0.0
+var _time_in_state := 0.0
 
 var moving_down = true:
 	set(value):
@@ -49,12 +49,16 @@ func increment_time(increment: float, max_limit: float):
 func _physics_process(delta: float) -> void:
 	if _dead:
 		return
-	if Input.is_action_pressed("movement_action"):
-		velocity.y += -force_up * accelearation_curve_up.sample(_time_in_state / acceleration_time_up)
+	if moving_down == false:
+		velocity.y += -force_up * accelearation_curve_up.sample(
+			_time_in_state / acceleration_time_up
+		)
 		increment_time(delta, acceleration_time_up)
 
 	else:
-		velocity.y += force_down * accelearation_curve_down.sample(_time_in_state / acceleration_time_down)
+		velocity.y += force_down * accelearation_curve_down.sample(
+			_time_in_state / acceleration_time_down
+		)
 		increment_time(delta, acceleration_time_down)
 
 	velocity.y = clampf(velocity.y, -top_speed_up, top_speed_down)
@@ -67,4 +71,5 @@ func _physics_process(delta: float) -> void:
 
 
 func hit_obstacle():
+	_dead = true
 	obstacle_hit.emit()

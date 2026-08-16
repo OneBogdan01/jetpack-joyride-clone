@@ -4,12 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://brjr0injhkxs2" path="res://scenes/world.tscn" id="2_0wfyh"]
 [ext_resource type="Script" uid="uid://cnffebgs27hwk" path="res://scripts/score.gd" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://dj1ntytvld6u2" path="res://scenes/ui/intro_screen.tscn" id="3_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://dg0usitkciyft" path="res://scenes/ui/game_over_menu.tscn" id="4_tefeu"]
 [ext_resource type="Script" uid="uid://f7yq040b4eat" path="res://scripts/scripts/fade_in.gd" id="5_tefeu"]
-[ext_resource type="Script" uid="uid://dkfphfssxyjeh" path="res://scripts/game_over.gd" id="7_ya4ey"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xeevv"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_riqys"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bhunq"]
 
@@ -37,139 +33,11 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 0.0
-offset_top = 0.0
+offset_top = 1.0
 offset_right = 480.0
-offset_bottom = 256.0
+offset_bottom = 257.0
 grow_horizontal = 1
 grow_vertical = 1
-
-[node name="GameOverMenu" type="Control" parent="UI/Root" unique_id=1483635232]
-unique_name_in_owner = true
-process_mode = 3
-visible = false
-custom_maximum_size = Vector2(720, -1)
-anchors_preset = 0
-offset_right = 480.0
-offset_bottom = 256.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("7_ya4ey")
-
-[node name="ScoreContainers" type="PanelContainer" parent="UI/Root/GameOverMenu" unique_id=760462249]
-self_modulate = Color(0, 0, 0, 0.43137255)
-custom_maximum_size = Vector2(720, -1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 240.0
-offset_bottom = -232.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="UI/Root/GameOverMenu/ScoreContainers" unique_id=1993029564]
-layout_mode = 2
-
-[node name="GameOver" type="MarginContainer" parent="UI/Root/GameOverMenu/ScoreContainers/CenterContainer" unique_id=799285072]
-layout_mode = 2
-theme_override_constants/margin_top = -527
-
-[node name="GameOver" type="Label" parent="UI/Root/GameOverMenu/ScoreContainers/CenterContainer/GameOver" unique_id=524530485]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.897973, 0.16003764, 0.18809664, 1)
-theme_override_font_sizes/font_size = 128
-text = "Game Over"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="ScorePanel" type="PanelContainer" parent="UI/Root/GameOverMenu" unique_id=1956653196]
-custom_maximum_size = Vector2(720, -1)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -438.0
-offset_top = -62.0
-offset_right = 282.0
-offset_bottom = 315.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_xeevv")
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/Root/GameOverMenu/ScorePanel" unique_id=2080587600]
-layout_mode = 2
-theme_override_constants/margin_left = 133
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 18
-
-[node name="Scores" type="GridContainer" parent="UI/Root/GameOverMenu/ScorePanel/MarginContainer" unique_id=173450783]
-layout_mode = 2
-theme_override_constants/h_separation = 224
-theme_override_constants/v_separation = 100
-columns = 2
-
-[node name="Score" type="Label" parent="UI/Root/GameOverMenu/ScorePanel/MarginContainer/Scores" unique_id=1408749406]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.9254902, 0.8156863, 0.3882353, 1)
-theme_override_font_sizes/font_size = 44
-text = "Score"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HighScore" type="Label" parent="UI/Root/GameOverMenu/ScorePanel/MarginContainer/Scores" unique_id=1839128011]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.9254902, 0.8156863, 0.3882353, 1)
-theme_override_constants/outline_size = 12
-theme_override_font_sizes/font_size = 44
-text = "High Score"
-horizontal_alignment = 1
-
-[node name="ScoreNumber" type="Label" parent="UI/Root/GameOverMenu/ScorePanel/MarginContainer/Scores" unique_id=2050266896]
-unique_name_in_owner = true
-layout_mode = 2
-text = "12"
-horizontal_alignment = 1
-
-[node name="HighScoreNumber" type="Label" parent="UI/Root/GameOverMenu/ScorePanel/MarginContainer/Scores" unique_id=2110510637]
-unique_name_in_owner = true
-layout_mode = 2
-text = "213"
-horizontal_alignment = 1
-
-[node name="ButtonContainer" type="PanelContainer" parent="UI/Root/GameOverMenu" unique_id=1902598959]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -132.0
-offset_top = -273.0
-offset_right = 132.0
-offset_bottom = -132.9997
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_riqys")
-
-[node name="BoxContainer" type="BoxContainer" parent="UI/Root/GameOverMenu/ButtonContainer" unique_id=1128873982]
-layout_mode = 2
-theme_override_constants/separation = 42
-alignment = 1
-vertical = true
-
-[node name="Play" type="Button" parent="UI/Root/GameOverMenu/ButtonContainer/BoxContainer" unique_id=1720818268]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Play Again"
-
-[node name="Quit" type="Button" parent="UI/Root/GameOverMenu/ButtonContainer/BoxContainer" unique_id=445923241]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Quit
-"
 
 [node name="ScoreContainer" type="PanelContainer" parent="UI/Root" unique_id=563214989]
 unique_name_in_owner = true
@@ -215,6 +83,15 @@ modulate = Color(1, 1, 1, 0.84705883)
 texture_filter = 1
 layout_mode = 2
 text = "123213213"
+
+[node name="GameOverMenu" parent="UI/Root" unique_id=1624671540 instance=ExtResource("4_tefeu")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 9
+anchor_right = 0.0
+offset_right = 268.0
+grow_horizontal = 1
 
 [connection signal="started_game" from="UI/Root/IntroScreen" to="." method="_on_intro_screen_started_game"]
 [connection signal="visibility_changed" from="UI/Root/ScoreContainer" to="UI/Root/ScoreContainer" method="_on_visibility_changed"]

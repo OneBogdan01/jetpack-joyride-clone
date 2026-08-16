@@ -39,7 +39,5 @@ func _on_player_hit_enviroment() -> void:
 
 
 func _on_intro_screen_started_game() -> void:
-	await world.start()
-
-	score.show()
 	%ScoreContainer.show()
+	await world.start()
