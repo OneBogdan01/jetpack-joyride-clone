@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dtd50opqsnvcl"]
+
+[ext_resource type="Texture2D" uid="uid://dy5toixewda2o" path="res://assets/kenney_pixel-line-platformer/Tilemap/tilemap_packed.png" id="3_cmqxu"]
+[ext_resource type="AudioStream" uid="uid://d3d0f06b0p0l7" path="res://assets/impact_sounds/Audio/footstep_carpet_000.ogg" id="5_vfq1u"]
+[ext_resource type="AudioStream" uid="uid://pfwgrgy6vpn7" path="res://assets/impact_sounds/Audio/impactBell_heavy_001.ogg" id="6_vku5x"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qlhre"]
+bounce = 0.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52v75"]
+size = Vector2(13, 14)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fjrip"]
+playback_mode = 1
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("5_vfq1u")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bhunq"]
+playback_mode = 1
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("6_vku5x")
+
+[node name="DeadBody" type="RigidBody2D" unique_id=307342213]
+collision_mask = 2
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_qlhre")
+can_sleep = false
+max_contacts_reported = 3
+constant_force = Vector2(30, 0)
+constant_torque = 25.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2073540099]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_52v75")
+
+[node name="TapSound" type="AudioStreamPlayer" parent="." unique_id=711253038]
+stream = SubResource("AudioStreamRandomizer_fjrip")
+
+[node name="DeadSound" type="AudioStreamPlayer" parent="." unique_id=990962787]
+stream = SubResource("AudioStreamRandomizer_bhunq")
+
+[node name="Gun" type="Sprite2D" parent="." unique_id=305035346]
+position = Vector2(-6, 3)
+rotation = 1.5707964
+texture = ExtResource("3_cmqxu")
+flip_v = true
+region_enabled = true
+region_rect = Rect2(0, 80, 16, 16)
+
+[node name="Character" type="Sprite2D" parent="." unique_id=1546334185]
+texture = ExtResource("3_cmqxu")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(80, 64, 32, 16)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -2,16 +2,20 @@
 
 [ext_resource type="Script" uid="uid://bcge70yte703t" path="res://scripts/obstacle_spawner.gd" id="1_vyba0"]
 [ext_resource type="PackedScene" uid="uid://chmpqfa1drtej" path="res://scenes/static_obstacle.tscn" id="2_ra2ui"]
+[ext_resource type="PackedScene" uid="uid://ccb8h5jnm5egn" path="res://scenes/dynamic_obstacle.tscn" id="3_gmt3g"]
 
 [node name="ObstacleSpawner" type="Node2D" unique_id=720864451]
 script = ExtResource("1_vyba0")
-node_to_spawn = ExtResource("2_ra2ui")
+node_to_spawn = Array[PackedScene]([ExtResource("2_ra2ui"), ExtResource("3_gmt3g")])
 
 [node name="Timer" type="Timer" parent="." unique_id=1722868276]
-wait_time = 5.0
+wait_time = 1.2999999999999998
 
 [node name="ScoreUpdate" type="Timer" parent="." unique_id=1148833239]
 wait_time = 0.16
+
+[node name="DifficultyIncrease" type="Timer" parent="." unique_id=124546777]
+wait_time = 5.0
 
 [node name="SpawnArea" type="Path2D" parent="." unique_id=1586214297]
 
@@ -22,3 +26,4 @@ rotates = false
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="ScoreUpdate" to="." method="_on_score_update_timeout"]
+[connection signal="timeout" from="DifficultyIncrease" to="." method="_on_difficulty_increase_timeout"]

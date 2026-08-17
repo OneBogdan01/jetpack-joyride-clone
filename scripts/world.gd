@@ -18,6 +18,7 @@ func start():
 
 
 func stop_movement():
+	obstacle_spawner.stop()
 	backgrounds.process_mode = Node.PROCESS_MODE_DISABLED
 
 

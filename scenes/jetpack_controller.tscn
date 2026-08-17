@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dy5toixewda2o" path="res://assets/kenney_pixel-line-platformer/Tilemap/tilemap_packed.png" id="1_qe2f5"]
 [ext_resource type="Script" uid="uid://c5dr718onlogx" path="res://scripts/jetpack_controller.gd" id="1_u7di4"]
+[ext_resource type="PackedScene" uid="uid://dtd50opqsnvcl" path="res://scenes/dead_player.tscn" id="2_72lh8"]
 
 [sub_resource type="Curve" id="Curve_72lh8"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), -0.13896088, 0.0, 0, 0]
@@ -80,11 +81,16 @@ _data = {
 &"walk": SubResource("Animation_u7di4")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bhunq"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72lh8"]
+size = Vector2(13.5, 14)
 
 [node name="JetpackController" type="CharacterBody2D" unique_id=1309846618]
-collision_mask = 6
+collision_mask = 2
+slide_on_ceiling = false
+platform_floor_layers = 0
 script = ExtResource("1_u7di4")
+dead_body = ExtResource("2_72lh8")
+force_on_die = Vector2(2, -200)
 force_up = 50.0
 accelearation_curve_up = SubResource("Curve_72lh8")
 acceleration_time_up = 0.2
@@ -98,7 +104,8 @@ autoplay = &"fly"
 speed_scale = 0.8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=296008622]
-shape = SubResource("CircleShape2D_bhunq")
+position = Vector2(-0.75, 1)
+shape = SubResource("RectangleShape2D_72lh8")
 
 [node name="Gun" type="Sprite2D" parent="." unique_id=1936092823]
 position = Vector2(-6, 3)

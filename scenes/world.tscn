@@ -73,11 +73,18 @@ texture = ExtResource("2_qfnet")
 [sub_resource type="TileSet" id="TileSet_71j4m"]
 sources/0 = SubResource("TileSetAtlasSource_i7141")
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qfnet"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qfnet"]
+normal = Vector2(1, 0)
+
 [sub_resource type="Curve2D" id="Curve2D_qfnet"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, -90, 0, 0, 0, 0, 0, 90)
+"points": PackedVector2Array(0, 0, 0, 0, -80, -91, 0, 0, 0, 0, 68, 2, 0, 0, 0, 0, -85, 94)
 }
-point_count = 2
+point_count = 3
 
 [sub_resource type="Animation" id="Animation_i7141"]
 length = 0.001
@@ -171,18 +178,27 @@ position = Vector2(0, 242)
 [node name="Ceiling" parent="Statics" unique_id=548204128 instance=ExtResource("3_qfnet")]
 rotation = -3.1415925
 
+[node name="Limit" parent="Statics" unique_id=1654498607 instance=ExtResource("3_qfnet")]
+position = Vector2(479, 125)
+rotation = -3.1415925
+physics_material_override = SubResource("PhysicsMaterial_qfnet")
+
+[node name="CollisionShape2D" parent="Statics/Limit" index="0" unique_id=1324777843]
+position = Vector2(-1, 1.509958e-07)
+shape = SubResource("WorldBoundaryShape2D_qfnet")
+
 [node name="ObstacleDestroyer" parent="Statics" unique_id=732822133 instance=ExtResource("6_qfnet")]
 position = Vector2(-248, 125)
 
 [node name="ObstacleSpawner" parent="." unique_id=720864451 instance=ExtResource("5_71j4m")]
 unique_name_in_owner = true
-position = Vector2(520, 125)
+position = Vector2(624, 125)
 
-[node name="SpawnArea" parent="ObstacleSpawner" index="2" unique_id=1586214297]
+[node name="SpawnArea" parent="ObstacleSpawner" index="3" unique_id=1586214297]
 curve = SubResource("Curve2D_qfnet")
 
 [node name="SampleSpawn" parent="ObstacleSpawner/SpawnArea" index="0" unique_id=608653811]
-position = Vector2(0, -90)
+position = Vector2(-80, -91)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=729316282]
 unique_name_in_owner = true
@@ -193,7 +209,6 @@ unique_name_in_owner = true
 z_index = 1
 position = Vector2(-16, 232)
 collision_mask = 14
-slide_on_ceiling = false
 platform_floor_layers = 4294901768
 platform_wall_layers = 6
 force_up = 12.0
@@ -210,4 +225,5 @@ position = Vector2(213, 232)
 
 [connection signal="obstacle_speed_changed" from="ObstacleSpawner" to="." method="update_ground_speed"]
 
+[editable path="Statics/Limit"]
 [editable path="ObstacleSpawner"]

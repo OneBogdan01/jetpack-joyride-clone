@@ -3,7 +3,8 @@ extends CharacterBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var projectiles_particles: CPUParticles2D = $ProjectilesParticles
-
+@export var dead_body: PackedScene
+@export var force_on_die := Vector2(30, 1.0)
 @export_category("Force Up")
 @export var force_up: float
 @export var top_speed_up: float
@@ -54,7 +55,6 @@ func _physics_process(delta: float) -> void:
 			_time_in_state / acceleration_time_up
 		)
 		increment_time(delta, acceleration_time_up)
-
 	else:
 		velocity.y += force_down * accelearation_curve_down.sample(
 			_time_in_state / acceleration_time_down
@@ -70,6 +70,14 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func hit_obstacle():
+func hit_obstacle(from: Vector2 = Vector2.ZERO):
+	queue_free()
 	_dead = true
 	obstacle_hit.emit()
+	var inst = dead_body.instantiate() as RigidBody2D
+	inst.position = position
+	inst.apply_impulse(
+		Vector2(%ObstacleSpawner.obstacle_speed * force_on_die.x, force_on_die.y),
+		from - global_position,
+	)
+	get_parent().add_child.call_deferred(inst)

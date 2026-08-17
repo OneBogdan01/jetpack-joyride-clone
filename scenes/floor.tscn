@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://daup3whagkygu"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cmqxu"]
+bounce = 0.4
+absorbent = true
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bhunq"]
 
 [node name="Floor" type="StaticBody2D" unique_id=1838703133]
 collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_cmqxu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1324777843]
 shape = SubResource("WorldBoundaryShape2D_bhunq")

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://ccb8h5jnm5egn"]
+
+[ext_resource type="Script" uid="uid://b58gn8ixkwtt3" path="res://scripts/mover.gd" id="1_s51ka"]
+[ext_resource type="Script" uid="uid://crk55ukogn3si" path="res://scripts/rotator.gd" id="2_ccv3i"]
+[ext_resource type="Script" uid="uid://beb8hstwaspw4" path="res://scripts/static_obstacle.gd" id="2_jg4s3"]
+[ext_resource type="Script" uid="uid://c2ymil5jntann" path="res://scripts/moving_obstacle.gd" id="3_ccv3i"]
+[ext_resource type="PackedScene" uid="uid://c7uwgteikrpgc" path="res://scenes/bee.tscn" id="4_6tiwv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qlhre"]
+radius = 1.0
+
+[sub_resource type="Curve2D" id="Curve2D_h8ci5"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -20, 0, 0, 0, 0, 0, 20)
+}
+point_count = 2
+
+[node name="Obstacle" type="AnimatableBody2D" unique_id=963683536]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_s51ka")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1078535404]
+shape = SubResource("CircleShape2D_qlhre")
+
+[node name="Rotator" type="Node2D" parent="." unique_id=1520602526]
+script = ExtResource("2_ccv3i")
+
+[node name="StaticObstacle" type="Path2D" parent="Rotator" unique_id=177351125]
+unique_name_in_owner = true
+curve = SubResource("Curve2D_h8ci5")
+script = ExtResource("2_jg4s3")
+
+[node name="MovingObstacle" type="PathFollow2D" parent="Rotator/StaticObstacle" unique_id=311495743]
+position = Vector2(0, -20)
+rotates = false
+loop = false
+script = ExtResource("3_ccv3i")
+obstacle = ExtResource("4_6tiwv")

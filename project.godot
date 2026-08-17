@@ -33,7 +33,7 @@ window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/GDQuest_GDScript_formatter/plugin.cfg")
+enabled=PackedStringArray("res://addons/GDQuest_GDScript_formatter/plugin.cfg", "res://addons/maaacks_credits_scene/plugin.cfg")
 
 [global_group]
 
@@ -64,6 +64,12 @@ screenshot={
 2d_physics/layer_2="Enviroment"
 2d_physics/layer_3="Score"
 2d_physics/layer_4="Obstacles"
+
+[maaacks_credits_scene]
+
+disable_update_check=false
+disable_install_wizard=true
+copy_path="res://"
 
 [physics]
 

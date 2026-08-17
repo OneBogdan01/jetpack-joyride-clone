@@ -12,7 +12,8 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_qlhre"]
+radius = 1.0
 
 [node name="Obstacle" type="AnimatableBody2D" unique_id=963683536]
 collision_layer = 8
@@ -20,6 +21,7 @@ collision_mask = 2
 script = ExtResource("1_qlhre")
 
 [node name="StaticObstacle" type="Path2D" parent="." unique_id=177351125]
+unique_name_in_owner = true
 curve = SubResource("Curve2D_h8ci5")
 script = ExtResource("1_hnkvu")
 
@@ -31,4 +33,4 @@ script = ExtResource("2_p8fto")
 obstacle = ExtResource("4_qlhre")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1078535404]
-shape = SubResource("RectangleShape2D_bhunq")
+shape = SubResource("CircleShape2D_qlhre")

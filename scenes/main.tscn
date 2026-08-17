@@ -91,7 +91,7 @@ visible = false
 layout_mode = 1
 anchors_preset = 9
 anchor_right = 0.0
-offset_right = 268.0
+offset_right = 240.0
 grow_horizontal = 1
 
 [connection signal="started_game" from="UI/Root/IntroScreen" to="." method="_on_intro_screen_started_game"]
