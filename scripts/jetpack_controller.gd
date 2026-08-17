@@ -2,7 +2,9 @@ class_name JetpackController
 extends CharacterBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var projectiles_particles: CPUParticles2D = $ProjectilesParticles
+@onready var projectiles_particles: GPUParticles2D = $Bullets
+@onready var muzzle: Sprite2D = $Muzzle
+
 @export var dead_body: PackedScene
 @export var force_on_die := Vector2(30, 1.0)
 @export_category("Force Up")
@@ -29,6 +31,12 @@ var moving_down = true:
 		moving_down = value
 		_time_in_state = 0.0
 		projectiles_particles.emitting = !value
+		muzzle.visible = !value
+
+
+func _ready() -> void:
+	projectiles_particles.emitting = false
+	muzzle.visible = false
 
 
 func _unhandled_input(event: InputEvent) -> void:

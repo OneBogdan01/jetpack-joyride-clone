@@ -9,13 +9,12 @@ script = ExtResource("1_vyba0")
 node_to_spawn = Array[PackedScene]([ExtResource("2_ra2ui"), ExtResource("3_gmt3g")])
 
 [node name="Timer" type="Timer" parent="." unique_id=1722868276]
-wait_time = 1.2999999999999998
+wait_time = 1.6999999999999997
 
 [node name="ScoreUpdate" type="Timer" parent="." unique_id=1148833239]
 wait_time = 0.16
 
 [node name="DifficultyIncrease" type="Timer" parent="." unique_id=124546777]
-wait_time = 5.0
 
 [node name="SpawnArea" type="Path2D" parent="." unique_id=1586214297]
 

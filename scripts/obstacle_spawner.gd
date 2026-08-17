@@ -2,10 +2,13 @@ class_name ObstacleSpawner
 extends Node2D
 
 @export var node_to_spawn: Array[PackedScene]
-@export var obstacle_speed := 100.0:
+var obstacle_speed := 100.0:
 	set(value):
 		obstacle_speed = value
 		obstacle_speed_changed.emit(value)
+@export var start_speed := 100.0
+@export var max_speed := 520.0
+@export var time_to_max := 90.0
 
 @onready var timer: Timer = $Timer
 @onready var score_update: Timer = $ScoreUpdate
@@ -17,6 +20,7 @@ var distance_travelled := 0.0
 
 signal score_triggered(distance: float)
 signal obstacle_speed_changed(new_speed: float)
+signal obstacle_spawn
 
 
 func start():
@@ -45,7 +49,9 @@ func spawn():
 	var scale_value = 1.0 + clamp(log(distance_travelled - 100) * randf_range(0.2, 1.0), 0.0, 2.0)
 	instance.static_obstacle.scale = Vector2(scale_value, scale_value)
 	await get_tree().process_frame
-	instance.static_obstacle.spawn_bees(randi_range(5, 10))
+	instance.static_obstacle.spawn_bees(randi_range(4, 10))
+	timer.wait_time = randf_range(1.5, 3.0)
+	obstacle_spawn.emit()
 
 
 func _on_timer_timeout() -> void:
@@ -61,4 +67,4 @@ func _on_score_update_timeout() -> void:
 
 
 func _on_difficulty_increase_timeout() -> void:
-	obstacle_speed += log(distance_travelled)
+	obstacle_speed = lerpf(start_speed, max_speed, minf(log(distance_travelled) / time_to_max, 1.0))

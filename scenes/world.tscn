@@ -80,11 +80,14 @@ bounce = 1.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qfnet"]
 normal = Vector2(1, 0)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bhunq"]
+polygon = PackedVector2Array(480, 247, 479, 257, 0, 256, 0, 247)
+
 [sub_resource type="Curve2D" id="Curve2D_qfnet"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -80, -91, 0, 0, 0, 0, 68, 2, 0, 0, 0, 0, -85, 94)
+"points": PackedVector2Array(0, 0, 0, 0, -80, -91, 0, 0, 0, 0, -85, 94)
 }
-point_count = 3
+point_count = 2
 
 [sub_resource type="Animation" id="Animation_i7141"]
 length = 0.001
@@ -189,6 +192,9 @@ shape = SubResource("WorldBoundaryShape2D_qfnet")
 
 [node name="ObstacleDestroyer" parent="Statics" unique_id=732822133 instance=ExtResource("6_qfnet")]
 position = Vector2(-248, 125)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Statics" unique_id=1349794007]
+occluder = SubResource("OccluderPolygon2D_bhunq")
 
 [node name="ObstacleSpawner" parent="." unique_id=720864451 instance=ExtResource("5_71j4m")]
 unique_name_in_owner = true
