@@ -110,7 +110,7 @@ gravity = Vector3(0, 0, 0)
 collision_mode = 2
 collision_use_scale = true
 
-[node name="JetpackController" type="CharacterBody2D" unique_id=1309846618]
+[node name="JetpackController" type="CharacterBody2D" unique_id=1309846618 groups=["player"]]
 collision_mask = 2
 slide_on_ceiling = false
 platform_floor_layers = 0

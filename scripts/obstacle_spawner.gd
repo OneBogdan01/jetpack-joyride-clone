@@ -86,12 +86,9 @@ func spawn() -> void:
 
 	var instance := node_to_spawn.pick_random().instantiate() as Mover
 	instance.speed = obstacle_speed
-
-	sample_spawn.progress_ratio = randf()
-	sample_spawn.force_update_transform()
-	instance.position = sample_spawn.position
-
 	add_child(instance)
+
+	instance.set_spawn_point(sample_spawn)
 
 	var s := _obstacle_scale()
 	instance.static_obstacle.scale = Vector2(s, s)

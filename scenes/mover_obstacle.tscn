@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://bdy4tw00t5vph"]
+
+[ext_resource type="Script" uid="uid://b58gn8ixkwtt3" path="res://scripts/mover.gd" id="1_30v54"]
+[ext_resource type="Texture2D" uid="uid://dy5toixewda2o" path="res://assets/kenney_pixel-line-platformer/Tilemap/tilemap_packed.png" id="2_kp714"]
+[ext_resource type="Script" uid="uid://djui4xtgvcmhx" path="res://scripts/charge.gd" id="2_p3yc1"]
+[ext_resource type="Script" uid="uid://beb8hstwaspw4" path="res://scripts/static_obstacle.gd" id="2_rtn36"]
+[ext_resource type="PackedScene" uid="uid://c7uwgteikrpgc" path="res://scenes/bee.tscn" id="4_7owvl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtn36"]
+atlas = ExtResource("2_kp714")
+region = Rect2(48, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3yc1"]
+atlas = ExtResource("2_kp714")
+region = Rect2(64, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7owvl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtn36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3yc1")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve2D" id="Curve2D_h8ci5"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -20, 0, 0, 0, 0, 0, 20)
+}
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qlhre"]
+radius = 1.0
+
+[node name="MoverObstacle" type="AnimatableBody2D" unique_id=963683536]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_30v54")
+point = 1
+
+[node name="Charge" type="Node2D" parent="." unique_id=1063638516]
+script = ExtResource("2_p3yc1")
+
+[node name="Bee" parent="Charge" unique_id=1998714828 instance=ExtResource("4_7owvl")]
+
+[node name="Sprite" parent="Charge/Bee" index="0" unique_id=510718856]
+sprite_frames = SubResource("SpriteFrames_7owvl")
+frame_progress = 0.56813765
+
+[node name="StaticObstacle" type="Path2D" parent="." unique_id=177351125]
+unique_name_in_owner = true
+curve = SubResource("Curve2D_h8ci5")
+script = ExtResource("2_rtn36")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1078535404]
+shape = SubResource("CircleShape2D_qlhre")
+
+[node name="Timer" type="Timer" parent="." unique_id=746053067]
+wait_time = 3.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="Charge" method="_on_timer_timeout"]
+
+[editable path="Charge/Bee"]

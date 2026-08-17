@@ -3,10 +3,11 @@
 [ext_resource type="Script" uid="uid://bcge70yte703t" path="res://scripts/obstacle_spawner.gd" id="1_vyba0"]
 [ext_resource type="PackedScene" uid="uid://chmpqfa1drtej" path="res://scenes/static_obstacle.tscn" id="2_ra2ui"]
 [ext_resource type="PackedScene" uid="uid://ccb8h5jnm5egn" path="res://scenes/dynamic_obstacle.tscn" id="3_gmt3g"]
+[ext_resource type="PackedScene" uid="uid://bdy4tw00t5vph" path="res://scenes/mover_obstacle.tscn" id="4_0ghqo"]
 
 [node name="ObstacleSpawner" type="Node2D" unique_id=720864451]
 script = ExtResource("1_vyba0")
-node_to_spawn = Array[PackedScene]([ExtResource("2_ra2ui"), ExtResource("3_gmt3g")])
+node_to_spawn = Array[PackedScene]([ExtResource("2_ra2ui"), ExtResource("3_gmt3g"), ExtResource("4_0ghqo")])
 start_speed = 70.0
 max_speed = 400.0
 min_interval = Vector2(1, 1.8)
