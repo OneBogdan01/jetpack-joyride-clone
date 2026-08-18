@@ -9,6 +9,12 @@ extends Node2D
 @onready var far_away: Parallax2D = %FarAway
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 
+@onready var bullets: GPUParticles2D = $Bullets
+
+
+func _ready() -> void:
+	bullets.emitting = true
+
 
 func start():
 	animation_player.play("intro")
