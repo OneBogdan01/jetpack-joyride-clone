@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dtd50opqsnvcl" path="res://scenes/dead_player.tscn" id="2_72lh8"]
 [ext_resource type="Texture2D" uid="uid://1akk0uf4bvsp" path="res://assets/kenney_pixel-line-platformer/kenney_pixel-line-platformer/tile_0044.png" id="4_qkd84"]
 [ext_resource type="Texture2D" uid="uid://cme6rgtmq78xh" path="res://assets/kenney_pixel-line-platformer/kenney_pixel-line-platformer/tile_0043.png" id="5_tu888"]
+[ext_resource type="Material" uid="uid://brgdcrs3evu7d" path="res://resources/jetpack_projectiles.tres" id="5_xe0un"]
 
 [sub_resource type="Curve" id="Curve_72lh8"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), -0.13896088, 0.0, 0, 0]
@@ -98,18 +99,6 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_72lh8"]
 size = Vector2(13.5, 14)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qkd84"]
-particle_flag_align_y = true
-angle_min = -89.99999
-angle_max = -89.99999
-direction = Vector3(0, 1, 0)
-spread = 30.0
-initial_velocity_min = 150.0
-initial_velocity_max = 234.15999
-gravity = Vector3(0, 0, 0)
-collision_mode = 2
-collision_use_scale = true
-
 [node name="JetpackController" type="CharacterBody2D" unique_id=1309846618 groups=["player"]]
 collision_mask = 2
 slide_on_ceiling = false
@@ -157,7 +146,7 @@ collision_base_size = 0.5
 trail_lifetime = 2.32
 trail_sections = 55
 trail_section_subdivisions = 39
-process_material = SubResource("ParticleProcessMaterial_qkd84")
+process_material = ExtResource("5_xe0un")
 
 [node name="Muzzle" type="Sprite2D" parent="." unique_id=1869831552]
 position = Vector2(-7, 15)

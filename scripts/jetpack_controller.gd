@@ -33,9 +33,14 @@ var moving_down = true:
 		projectiles_particles.emitting = !value
 		muzzle.visible = !value
 
+const JETPACK_PROJECTILES = preload("uid://brgdcrs3evu7d")
+
 
 func _ready() -> void:
+	projectiles_particles.emitting = true
+
 	projectiles_particles.emitting = false
+
 	muzzle.visible = false
 
 
@@ -60,12 +65,12 @@ func _physics_process(delta: float) -> void:
 		return
 	if moving_down == false:
 		velocity.y += -force_up * accelearation_curve_up.sample(
-			_time_in_state / acceleration_time_up
+			_time_in_state / acceleration_time_up,
 		)
 		increment_time(delta, acceleration_time_up)
 	else:
 		velocity.y += force_down * accelearation_curve_down.sample(
-			_time_in_state / acceleration_time_down
+			_time_in_state / acceleration_time_down,
 		)
 		increment_time(delta, acceleration_time_down)
 
