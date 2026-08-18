@@ -56,6 +56,9 @@ offset_bottom = 257.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="PanelContainer" parent="UI/Root/IntroScreen" index="1" unique_id=1518296187]
+mouse_filter = 2
+
 [node name="ScoreContainer" type="PanelContainer" parent="UI/Root" unique_id=563214989]
 unique_name_in_owner = true
 visible = false
@@ -112,3 +115,5 @@ grow_horizontal = 1
 
 [connection signal="started_game" from="UI/Root/IntroScreen" to="." method="_on_intro_screen_started_game"]
 [connection signal="visibility_changed" from="UI/Root/ScoreContainer" to="UI/Root/ScoreContainer" method="_on_visibility_changed"]
+
+[editable path="UI/Root/IntroScreen"]

@@ -22,7 +22,7 @@ func _ready() -> void:
 	#player_tween.tween_property(world.player, "global_position", world.player.global_position - offset_position, duration)
 
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("movement_action"):
 		%AnimationPlayer.play("fade_out")
 		await %AnimationPlayer.animation_finished

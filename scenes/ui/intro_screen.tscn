@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dj1ntytvld6u2"]
 
 [ext_resource type="Script" uid="uid://bhmpcrqy6ldv" path="res://scripts/intro_screen.gd" id="1_867q5"]
+[ext_resource type="PackedScene" uid="uid://d3fm7v8sutg0t" path="res://scenes/credits/scrollable_credits.tscn" id="2_orp5c"]
 
 [sub_resource type="Animation" id="Animation_orp5c"]
 length = 0.001
@@ -74,6 +75,14 @@ mouse_filter = 2
 script = ExtResource("1_867q5")
 offset_position = Vector2(0, 25)
 
+[node name="Button" type="Button" parent="." unique_id=21249431]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 170.0
+offset_right = 302.0
+offset_bottom = 226.0
+text = "Credits"
+
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1518296187]
 layout_mode = 1
 anchors_preset = 8
@@ -110,3 +119,9 @@ vertical_alignment = 1
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_orp5c")
 autoplay = &"press_to_play"
+
+[node name="ScrollableCredits" parent="." unique_id=778902116 instance=ExtResource("2_orp5c")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="Button" to="ScrollableCredits" method="show"]

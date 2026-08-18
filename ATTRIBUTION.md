@@ -1,5 +1,4 @@
-# Attribution
-## Collaborators
+## Credits
 Made by Bogdan Mocanu for the 20 games challange.
 
 ### Assets

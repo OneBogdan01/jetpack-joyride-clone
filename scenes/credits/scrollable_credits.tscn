@@ -1,19 +1,61 @@
 [gd_scene format=3 uid="uid://d3fm7v8sutg0t"]
 
-[ext_resource type="Script" path="res://scenes/credits/scrollable_credits.gd" id="1_jnbjt"]
-[ext_resource type="PackedScene" path="res://scenes/credits/credits_label.tscn" id="2_35kdw"]
+[ext_resource type="Texture2D" uid="uid://vprcm0rwkfml" path="res://assets/tappy_plane/PNG/UI/UIbg.png" id="1_35kdw"]
+[ext_resource type="Script" uid="uid://cjit0nm4cfrya" path="res://scenes/credits/scrollable_credits.gd" id="1_jnbjt"]
+[ext_resource type="PackedScene" uid="uid://bxr4ome255wf4" path="res://scenes/credits/credits_label.tscn" id="2_35kdw"]
 
-[node name="ScrollableCredits" type="Control" unique_id=778902116]
-layout_mode = 3
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jnbjt"]
+texture = ExtResource("1_35kdw")
+
+[node name="PanelContainer" type="PanelContainer" unique_id=36972883]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_jnbjt")
+
+[node name="ScrollableCredits" type="Control" parent="." unique_id=778902116]
+layout_mode = 2
 script = ExtResource("1_jnbjt")
 
-[node name="CreditsLabel" parent="." unique_id=2043146142 instance=ExtResource("2_35kdw")]
+[node name="CreditsLabel" parent="ScrollableCredits" unique_id=2043146142 instance=ExtResource("2_35kdw")]
 unique_name_in_owner = true
 layout_mode = 1
+text = "[font_size=48]Collaborators[/font_size]
+Made by Bogdan Mocanu for the 20 games challange.
+
+[font_size=32]Assets[/font_size]
+Author: [url=www.kenney.nl]Kenney[/url]  
+
+[font_size=48]Tools[/font_size]
+[font_size=24]Godot[/font_size]
+[img=80]res:///assets/godot_engine_logo/logo_vertical_color_dark.png[/img]  
+Author: [url=https://godotengine.org/contact]Juan Linietsky, Ariel Manzur, and contributors[/url]  
+Source: [url=https://godotengine.org/]godotengine.org[/url]  
+License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url] 
+
+[font_size=24]Godot Credits Scene[/font_size]
+[img=80]res:///assets/plugin_logo/logo.png[/img]  
+Author: [url=https://github.com/Maaack/Godot-Credits-Scene/graphs/contributors]Marek Belski and contributors[/url]  
+Source: [url=https://github.com/Maaack/Godot-Credits-Scene]github: Godot-Credits-Scene[/url]  
+License: [url=LICENSE.txt]MIT License[/url]  
+"
 fit_content = false
 scroll_active = true
+
+[node name="Button" type="Button" parent="ScrollableCredits" unique_id=1746552676]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -62.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Close"
+
+[connection signal="pressed" from="ScrollableCredits/Button" to="." method="hide"]
