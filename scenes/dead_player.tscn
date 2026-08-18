@@ -27,6 +27,7 @@ collision_mask = 2
 mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_qlhre")
 can_sleep = false
+contact_monitor = true
 max_contacts_reported = 3
 constant_force = Vector2(30, 0)
 constant_torque = 25.0
@@ -37,9 +38,11 @@ shape = SubResource("RectangleShape2D_52v75")
 
 [node name="TapSound" type="AudioStreamPlayer" parent="." unique_id=711253038]
 stream = SubResource("AudioStreamRandomizer_fjrip")
+max_polyphony = 3
 
 [node name="DeadSound" type="AudioStreamPlayer" parent="." unique_id=990962787]
 stream = SubResource("AudioStreamRandomizer_bhunq")
+autoplay = true
 
 [node name="Gun" type="Sprite2D" parent="." unique_id=305035346]
 position = Vector2(-6, 3)
@@ -55,4 +58,4 @@ hframes = 2
 region_enabled = true
 region_rect = Rect2(80, 64, 32, 16)
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="." to="TapSound" method="play"]
