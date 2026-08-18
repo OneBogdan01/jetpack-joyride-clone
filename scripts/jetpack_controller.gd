@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var projectiles_particles: GPUParticles2D = $Bullets
 @onready var muzzle: Sprite2D = $Muzzle
+@onready var sound_rate: Timer = $SoundRate
 
 @export var dead_body: PackedScene
 @export var force_on_die := Vector2(30, 1.0)
@@ -33,11 +34,8 @@ var moving_down = true:
 		projectiles_particles.emitting = !value
 		muzzle.visible = !value
 
-const JETPACK_PROJECTILES = preload("uid://brgdcrs3evu7d")
-
 
 func _ready() -> void:
-	await get_tree().create_timer(0.2).timeout
 	projectiles_particles.emitting = false
 
 	muzzle.visible = false
@@ -46,12 +44,15 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if allow_input == false:
 		return
+
 	if event.is_action_pressed("movement_action"):
 		moving_down = false
+		sound_rate.timeout.emit()
+		sound_rate.start()
 
 	if event.is_action_released("movement_action"):
 		moving_down = true
-
+		sound_rate.stop()
 		#velocity *= 0.5
 
 
@@ -67,6 +68,7 @@ func _physics_process(delta: float) -> void:
 			_time_in_state / acceleration_time_up,
 		)
 		increment_time(delta, acceleration_time_up)
+
 	else:
 		velocity.y += force_down * accelearation_curve_down.sample(
 			_time_in_state / acceleration_time_down,
