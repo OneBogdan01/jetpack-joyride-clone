@@ -8,13 +8,13 @@
 [node name="ObstacleSpawner" type="Node2D" unique_id=720864451]
 script = ExtResource("1_vyba0")
 node_to_spawn = Array[PackedScene]([ExtResource("2_ra2ui"), ExtResource("3_gmt3g"), ExtResource("4_0ghqo")])
-start_speed = 70.0
-max_speed = 400.0
+start_speed = 60.0
+max_speed = 230.0
 min_interval = Vector2(1, 1.8)
 distance_to_min_interval = 12000.0
 
 [node name="Timer" type="Timer" parent="." unique_id=1722868276]
-wait_time = 1.6999999999999997
+wait_time = 1.6999999999999995
 
 [node name="ScoreUpdate" type="Timer" parent="." unique_id=1148833239]
 wait_time = 0.16

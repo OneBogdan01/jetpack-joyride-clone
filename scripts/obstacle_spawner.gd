@@ -77,7 +77,7 @@ func _next_interval() -> float:
 func _obstacle_scale() -> float:
 	# maxf guards log() against zero and negatives early in the run.
 	var d := maxf(distance_travelled - scale_ramp_offset, 1.0)
-	var extra := clampf(log(d) * randf_range(0.2, 1.0), 0.0, max_extra_scale)
+	var extra := clampf(log(d) * randf_range(0.0, 1.0), 0.0, max_extra_scale)
 	return 1.0 + extra
 
 
@@ -86,16 +86,23 @@ func spawn() -> void:
 
 	var instance := node_to_spawn.pick_random().instantiate() as Mover
 	instance.speed = obstacle_speed
+
+	sample_spawn.progress_ratio = randf()
+	sample_spawn.force_update_transform()
+	var player := get_tree().get_first_node_in_group("player") as Node2D
+	instance.set_spawn_point(sample_spawn.position, to_local(player.global_position))
+
 	add_child(instance)
-
-	instance.set_spawn_point(sample_spawn)
-
 	var s := _obstacle_scale()
 	instance.static_obstacle.scale = Vector2(s, s)
 
 	await get_tree().process_frame
-	if not is_instance_valid(instance):
-		return
+	print(
+		"next frame: ",
+		instance.global_position,
+		" obstacle=",
+		instance.static_obstacle.global_position,
+	)
 	instance.static_obstacle.spawn_bees(randi_range(4, 10))
 
 

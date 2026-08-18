@@ -48,6 +48,7 @@ point = 1
 script = ExtResource("2_p3yc1")
 
 [node name="Bee" parent="Charge" unique_id=1998714828 instance=ExtResource("4_7owvl")]
+scale = Vector2(3, 3)
 
 [node name="Sprite" parent="Charge/Bee" index="0" unique_id=510718856]
 sprite_frames = SubResource("SpriteFrames_7owvl")
@@ -62,10 +63,13 @@ script = ExtResource("2_rtn36")
 shape = SubResource("CircleShape2D_qlhre")
 
 [node name="Timer" type="Timer" parent="." unique_id=746053067]
-wait_time = 3.5
+wait_time = 0.5
 one_shot = true
-autostart = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=603621093]
+rect = Rect2(-4, -6, 8, 13)
 
 [connection signal="timeout" from="Timer" to="Charge" method="_on_timer_timeout"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="Timer" method="start"]
 
 [editable path="Charge/Bee"]

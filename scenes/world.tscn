@@ -210,7 +210,7 @@ position = Vector2(-80, -91)
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_i7141")
 
-[node name="Player" parent="." unique_id=1042408190 groups=["player"] instance=ExtResource("5_qfnet")]
+[node name="Player" parent="." unique_id=1042408190 instance=ExtResource("5_qfnet")]
 unique_name_in_owner = true
 z_index = 1
 position = Vector2(-16, 232)

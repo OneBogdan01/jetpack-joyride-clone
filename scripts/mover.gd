@@ -1,5 +1,6 @@
 class_name Mover
 extends Node2D
+
 enum SpawnPoint {
 	RANDOM,
 	PLAYER,
@@ -12,14 +13,11 @@ enum SpawnPoint {
 @export var point: SpawnPoint
 
 
-func set_spawn_point(curve: PathFollow2D):
-	curve.progress_ratio = randf()
-	curve.force_update_transform()
+func set_spawn_point(curve_pos: Vector2, player_y: Vector2):
 	if point == SpawnPoint.RANDOM:
-		global_position = curve.global_position
+		position = curve_pos
 	else:
-		var player := get_tree().get_first_node_in_group("player") as Node2D
-		global_position = Vector2(curve.global_position.x, player.global_position.y)
+		position = Vector2(curve_pos.x, player_y.y)
 
 
 func _physics_process(delta: float) -> void:
