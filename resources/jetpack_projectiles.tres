@@ -1,0 +1,13 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://brgdcrs3evu7d"]
+
+[resource]
+particle_flag_align_y = true
+angle_min = -89.99999
+angle_max = -89.99999
+direction = Vector3(0, 1, 0)
+spread = 30.0
+initial_velocity_min = 150.0
+initial_velocity_max = 234.15999
+gravity = Vector3(0, 0, 0)
+collision_mode = 2
+collision_use_scale = true

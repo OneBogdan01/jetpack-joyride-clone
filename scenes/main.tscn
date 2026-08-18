@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://brjr0injhkxs2" path="res://scenes/world.tscn" id="2_0wfyh"]
 [ext_resource type="Script" uid="uid://cnffebgs27hwk" path="res://scripts/score.gd" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://dj1ntytvld6u2" path="res://scenes/ui/intro_screen.tscn" id="3_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://1akk0uf4bvsp" path="res://assets/kenney_pixel-line-platformer/kenney_pixel-line-platformer/tile_0044.png" id="3_tipki"]
+[ext_resource type="Material" uid="uid://brgdcrs3evu7d" path="res://resources/jetpack_projectiles.tres" id="4_85g3d"]
 [ext_resource type="PackedScene" uid="uid://dg0usitkciyft" path="res://scenes/ui/game_over_menu.tscn" id="4_tefeu"]
 [ext_resource type="Script" uid="uid://f7yq040b4eat" path="res://scripts/scripts/fade_in.gd" id="5_tefeu"]
 
@@ -14,6 +16,20 @@ script = ExtResource("1_o5qli")
 
 [node name="World" parent="." unique_id=1966478873 instance=ExtResource("2_0wfyh")]
 unique_name_in_owner = true
+
+[node name="Bullets" type="GPUParticles2D" parent="World" unique_id=648409755]
+position = Vector2(251, 125)
+emitting = false
+amount = 50
+texture = ExtResource("3_tipki")
+lifetime = 0.01
+one_shot = true
+explosiveness = 0.01
+collision_base_size = 0.5
+trail_lifetime = 2.32
+trail_sections = 55
+trail_section_subdivisions = 39
+process_material = ExtResource("4_85g3d")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1637280733]
 
